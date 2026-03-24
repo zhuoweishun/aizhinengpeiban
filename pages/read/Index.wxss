@@ -1,0 +1,91 @@
+/**
+ * 读给你听页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $gradient-points;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  text-align: center;
+  padding: $padding-xl $page-padding $padding-md;
+}
+
+.title {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $points-text-primary;
+  margin-bottom: $margin-sm;
+}
+
+.subtitle {
+  display: block;
+  font-size: $font-size-sm;
+  color: $points-text-secondary;
+}
+
+.content-list {
+  padding: 0 $page-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+}
+
+.content-item {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $padding-lg;
+  box-shadow: $shadow-md;
+}
+
+.content-icon {
+  font-size: 56rpx;
+}
+
+.content-info {
+  flex: 1;
+}
+
+.content-title {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin-bottom: 8rpx;
+}
+
+.content-desc {
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.play-btn {
+  background: $primary-gradient;
+  border-radius: $radius-full;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.play-icon {
+  font-size: 36rpx;
+  color: $text-white;
+}

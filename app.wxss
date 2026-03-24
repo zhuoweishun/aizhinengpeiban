@@ -1,88 +1,208 @@
 /**
  * 瓜瓜陪伴微信小程序 - 全局样式
- * 
+ *
  * @description 温暖治愈系 UI 风格
- * 主色调：#FF6B81（温暖粉）
- * 背景色：#FFF5F6（淡粉白）
+ * 主色调：#FF6B81（温暖珊瑚粉）
+ * 背景色：#FFF5F6 → #FFE4E8（淡粉渐变）
+ * 设计理念：温暖、可爱、治愈、统一
  */
 
-/* 全局变量 */
+/* ========== 引入样式变量 ========== */
+@import './styles/variables/color.scss';
+@import './styles/variables/spacing.scss';
+@import './styles/variables/typography.scss';
+@import './styles/variables/radius.scss';
+@import './styles/variables/animation.scss';
+@import './styles/variables/shadow.scss';
+@import './styles/variables/common.scss';
+
+/* ========== 全局重置 ========== */
 page {
-  background-color: #FFF5F6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 28rpx;
-  color: #333;
+  background: $bg-page;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  color: $text-primary;
+  box-sizing: border-box;
+  line-height: $line-height-normal;
+}
+
+view, text, image, button {
   box-sizing: border-box;
 }
 
-/* 通用容器 */
-.container {
-  padding: 20rpx;
-  min-height: 100vh;
-  background-color: #FFF5F6;
-}
-
-/* 卡片样式 */
-.card {
-  background-color: #FFFFFF;
-  border-radius: 16rpx;
-  padding: 24rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 2rpx 12rpx rgba(255, 107, 129, 0.1);
-}
-
-/* 按钮通用样式 */
-.btn-primary {
-  background-color: #FF6B81;
-  color: #FFFFFF;
+button {
   border: none;
-  border-radius: 40rpx;
-  padding: 20rpx 60rpx;
-  font-size: 30rpx;
-  font-weight: 500;
+  background: none;
+  padding: 0;
+  margin: 0;
+
+  &::after {
+    border: none;
+  }
 }
 
-.btn-primary:active {
-  opacity: 0.8;
+/* ========== 安全区域 ========== */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
 }
 
-/* 文字样式 */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ========== 通用容器 ========== */
+.container {
+  min-height: 100vh;
+  background: $bg-page;
+  padding: $page-padding;
+  padding-bottom: calc($page-padding + env(safe-area-inset-bottom));
+}
+
+.page-container {
+  min-height: 100vh;
+  background: $bg-page;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+/* ========== 通用卡片 ========== */
+.card {
+  background: $bg-primary;
+  border-radius: $card-radius;
+  padding: $padding-lg;
+  margin-bottom: $card-margin;
+  box-shadow: $shadow-sm;
+  transition: all $transition-fast;
+
+  &:active {
+    box-shadow: $shadow-xs;
+  }
+}
+
+.card-primary {
+  @extend .card;
+  background: linear-gradient(135deg, rgba($primary-color, 0.08) 0%, rgba($primary-light, 0.08) 100%);
+  box-shadow: $shadow-primary-xs;
+}
+
+/* ========== 通用按钮 ========== */
+.btn-primary {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  padding: $padding-sm $padding-xl;
+  border-radius: $btn-radius;
+  box-shadow: $shadow-primary-sm;
+  transition: all $transition-fast;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.96);
+  }
+}
+
+.btn-primary-lg {
+  @extend .btn-primary;
+  font-size: $font-size-lg;
+  padding: $padding-md $padding-xxl;
+  border-radius: $btn-large-radius;
+}
+
+.btn-primary-sm {
+  @extend .btn-primary;
+  font-size: $font-size-sm;
+  padding: $padding-xs $padding-md;
+  border-radius: $btn-small-radius;
+}
+
+/* ========== 通用输入框 ========== */
+.input {
+  width: 100%;
+  padding: $padding-sm;
+  background: $bg-secondary;
+  border-radius: $input-radius;
+  font-size: $font-size-md;
+  border: 2rpx solid transparent;
+  transition: all $transition-fast;
+
+  &:focus {
+    background: $bg-primary;
+    border-color: $primary-light;
+    box-shadow: $shadow-primary-xs;
+  }
+}
+
+.textarea {
+  @extend .input;
+  min-height: 160rpx;
+  line-height: $line-height-relaxed;
+}
+
+/* ========== 通用标题 ========== */
+.page-title {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  text-align: center;
+  margin-bottom: $margin-sm;
+}
+
+.page-subtitle {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  text-align: center;
+  margin-bottom: $margin-lg;
+}
+
+.section-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin-bottom: $margin-md;
+}
+
+/* ========== 通用文字 ========== */
+.text-primary {
+  color: $text-primary;
+}
+
+.text-secondary {
+  color: $text-secondary;
+}
+
+.text-muted {
+  color: $text-muted;
+}
+
+.text-white {
+  color: $text-white;
+}
+
+.text-theme {
+  color: $primary-color;
+}
+
 .text-center {
   text-align: center;
 }
 
-.text-primary {
-  color: #FF6B81;
+.text-sm {
+  font-size: $font-size-sm;
 }
 
-.text-secondary {
-  color: #999;
+.text-md {
+  font-size: $font-size-md;
 }
 
-.text-large {
-  font-size: 36rpx;
-  font-weight: 600;
+.text-lg {
+  font-size: $font-size-lg;
 }
 
-.text-small {
-  font-size: 24rpx;
-  color: #999;
+.font-bold {
+  font-weight: $font-weight-bold;
 }
 
-/* 间距工具类 */
-.mt-20 {
-  margin-top: 20rpx;
-}
-
-.mb-20 {
-  margin-bottom: 20rpx;
-}
-
-.p-20 {
-  padding: 20rpx;
-}
-
-/* Flex 布局 */
+/* ========== 通用布局 ========== */
 .flex {
   display: flex;
 }
@@ -104,8 +224,262 @@ page {
   flex-direction: column;
 }
 
-/* 安全区域 */
-.safe-area-bottom {
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
+.flex-1 {
+  flex: 1;
+}
+
+/* ========== 通用间距 ========== */
+.mt-sm {
+  margin-top: $margin-sm;
+}
+
+.mt-md {
+  margin-top: $margin-md;
+}
+
+.mt-lg {
+  margin-top: $margin-lg;
+}
+
+.mb-sm {
+  margin-bottom: $margin-sm;
+}
+
+.mb-md {
+  margin-bottom: $margin-md;
+}
+
+.mb-lg {
+  margin-bottom: $margin-lg;
+}
+
+.p-sm {
+  padding: $padding-sm;
+}
+
+.p-md {
+  padding: $padding-md;
+}
+
+.p-lg {
+  padding: $padding-lg;
+}
+
+/* ========== 通用圆角 ========== */
+.radius-lg {
+  border-radius: $radius-lg;
+}
+
+.radius-xl {
+  border-radius: $radius-xl;
+}
+
+.radius-xxl {
+  border-radius: $radius-xxl;
+}
+
+.radius-full {
+  border-radius: $radius-full;
+}
+
+/* ========== 通用阴影 ========== */
+.shadow-sm {
+  box-shadow: $shadow-sm;
+}
+
+.shadow-md {
+  box-shadow: $shadow-md;
+}
+
+.shadow-primary {
+  box-shadow: $shadow-primary-md;
+}
+
+/* ========== 通用背景 ========== */
+.bg-white {
+  background: $bg-primary;
+}
+
+.bg-gradient {
+  background: $bg-page;
+}
+
+.bg-primary {
+  background: $primary-gradient;
+}
+
+/* ========== 分隔线 ========== */
+.divider {
+  height: 1rpx;
+  background: $border-divider;
+  margin: $margin-md 0;
+}
+
+.divider-light {
+  @extend .divider;
+  background: $border-light;
+}
+
+/* ========== 空状态 ========== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 32rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: $margin-lg;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: $font-size-lg;
+  color: $text-muted;
+  text-align: center;
+}
+
+.empty-hint {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  margin-top: $margin-sm;
+}
+
+/* ========== 加载中 ========== */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80rpx 0;
+}
+
+.loading-spinner {
+  font-size: 48rpx;
+  color: $primary-color;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== 标签/徽章 ========== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rpx 12rpx;
+  background: $primary-color;
+  color: $text-white;
+  font-size: $font-size-xs;
+  border-radius: $badge-radius;
+}
+
+.badge-outline {
+  @extend .badge;
+  background: transparent;
+  border: 2rpx solid $primary-color;
+  color: $primary-color;
+}
+
+/* ========== 头像 ========== */
+.avatar {
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: $avatar-radius;
+  overflow: hidden;
+  background: $secondary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-sm {
+  @extend .avatar;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.avatar-lg {
+  @extend .avatar;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/* ========== 页面头部 ========== */
+.page-header {
+  background: $primary-gradient;
+  padding: calc($padding-lg + env(safe-area-inset-top)) $padding-lg $padding-xl;
+  border-radius: 0 0 $radius-xxl $radius-xxl;
+  box-shadow: $shadow-primary-md;
+}
+
+.page-header-content {
+  color: $text-white;
+}
+
+/* ========== 列表项 ========== */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: $padding-md $padding-lg;
+  background: $bg-primary;
+  border-bottom: 1rpx solid $border-light;
+  transition: background $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $bg-secondary;
+  }
+}
+
+/* ========== 图标按钮 ========== */
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-full;
+  background: rgba($primary-color, 0.1);
+  color: $primary-color;
+  transition: all $transition-fast;
+
+  &:active {
+    background: $primary-color;
+    color: $text-white;
+    transform: scale(0.9);
+  }
+}
+
+/* ========== 返回顶部 ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 100rpx;
+  right: 32rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-full;
+  background: $bg-primary;
+  box-shadow: $shadow-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary-color;
+  font-size: 40rpx;
+  z-index: 999;
+
+  &:active {
+    transform: scale(0.9);
+  }
 }

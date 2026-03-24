@@ -1,0 +1,88 @@
+/**
+ * 间距变量
+ * @description 全局间距配置 - 统一使用 8 的倍数（rpx 单位）
+ *
+ * 设计规范：
+ * - 基础单位：8rpx
+ * - 所有间距为基础单位的倍数
+ * - 保证视觉节奏统一
+ */
+
+/* ========== 外边距（Margin）========== */
+$margin-xs: 8rpx;       // 8
+$margin-sm: 16rpx;      // 16
+$margin-md: 24rpx;      // 24
+$margin-lg: 32rpx;      // 32
+$margin-xl: 48rpx;      // 48
+$margin-xxl: 64rpx;     // 64
+
+/* ========== 内边距（Padding）========== */
+$padding-xs: 8rpx;      // 8
+$padding-sm: 16rpx;     // 16
+$padding-md: 24rpx;     // 24
+$padding-lg: 32rpx;     // 32
+$padding-xl: 48rpx;     // 48
+$padding-xxl: 64rpx;    // 64
+
+/* ========== 间距（Gap）========== */
+$gap-xs: 8rpx;          // 8 - 最小间距
+$gap-sm: 12rpx;         // 12 - 小间距
+$gap-md: 16rpx;         // 16 - 中间距
+$gap-lg: 24rpx;         // 24 - 大间距
+$gap-xl: 32rpx;         // 32 - 超大间距
+
+/* ========== 页面级间距 ========== */
+$page-padding: 32rpx;           // 页面标准内边距
+$page-margin: 24rpx;            // 页面标准外边距
+$section-margin: 32rpx;         // 区块间距
+$card-margin: 24rpx;            // 卡片间距
+
+/* ========== 组件间距 ========== */
+$item-spacing: 16rpx;           // 列表项间距
+$button-spacing: 24rpx;         // 按钮间距
+$input-spacing: 16rpx;          // 表单项间距
+$icon-text-gap: 12rpx;          // 图标与文字间距
+$avatar-size: 80rpx;            // 头像尺寸
+
+/* ========== 特殊间距 ========== */
+$safe-area-top: calc(32rpx + env(safe-area-inset-top));
+$safe-area-bottom: calc(20rpx + env(safe-area-inset-bottom));
+
+/* ========== 常用尺寸 ========== */
+/* 图标尺寸 */
+$icon-size-mini: 32rpx;
+$icon-size-small: 40rpx;
+$icon-size-base: 48rpx;
+$icon-size-large: 56rpx;
+$icon-size-xl: 80rpx;
+$icon-size-xxl: 100rpx;
+$icon-size-xxxl: 120rpx;
+
+/* 头像尺寸 */
+$avatar-size-sm: 60rpx;
+$avatar-size-base: 80rpx;
+$avatar-size-lg: 100rpx;
+$avatar-size-xl: 120rpx;
+
+/* 卡片/组件高度 */
+$card-height-sm: 160rpx;
+$card-height-base: 200rpx;
+$card-height-lg: 240rpx;
+
+/* 按钮高度 */
+$btn-height-sm: 56rpx;
+$btn-height-base: 64rpx;
+$btn-height-lg: 80rpx;
+
+/* 进度条尺寸 */
+$progress-height: 12rpx;
+$progress-radius: 6rpx;
+
+/* 边框宽度 */
+$border-width: 1rpx;
+$border-width-thick: 2rpx;
+
+/* 常用 padding 值 */
+$padding-xs-sm: 10rpx;
+$padding-sm-md: 18rpx;
+$padding-md-lg: 28rpx;

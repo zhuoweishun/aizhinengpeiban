@@ -1,0 +1,64 @@
+<!--
+  我的优惠券页面
+  @description 查看和使用优惠券
+-->
+
+<view class="container">
+
+  <!-- 头部统计 -->
+  <view class="header">
+    <view class="coupon-summary">
+      <view class="summary-item">
+        <text class="summary-value">{{availableCount}}</text>
+        <text class="summary-label">可用</text>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <text class="summary-value">{{usedCount}}</text>
+        <text class="summary-label">已用</text>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <text class="summary-value">{{expiredCount}}</text>
+        <text class="summary-label">过期</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 优惠券列表 -->
+  <view class="coupon-list">
+    <block wx:for="{{coupons}}" wx:key="id">
+      <view class="coupon-item {{item.status}}">
+        <view class="coupon-left">
+          <view class="coupon-amount">
+            <text class="amount-value">{{item.discountAmount}}</text>
+            <text class="amount-unit">元</text>
+          </view>
+          <view class="coupon-condition">
+            <text wx:if="{{item.minAmount > 0}}">满{{item.minAmount}}可用</text>
+            <text wx:else>无门槛</text>
+          </view>
+        </view>
+        <view class="coupon-divider"></view>
+        <view class="coupon-right">
+          <text class="coupon-name">{{item.name}}</text>
+          <text class="coupon-desc">{{item.description}}</text>
+          <text class="coupon-validity">有效期至 {{item.validUntil}}</text>
+          <button class="use-btn" wx:if="{{item.status === 'available'}}" bindtap="useCoupon" data-id="{{item.id}}">
+            立即使用
+          </button>
+          <text class="used-tag" wx:elif="{{item.status === 'used'}}">已使用</text>
+          <text class="expired-tag" wx:else>已过期</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{coupons.length === 0}}">
+    <text class="empty-icon">🎫</text>
+    <text class="empty-text">暂无优惠券</text>
+    <button class="get-coupon-btn" bindtap="goToShop">去获取</button>
+  </view>
+
+</view>

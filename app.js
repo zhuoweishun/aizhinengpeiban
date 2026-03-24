@@ -1,11 +1,9 @@
 /**
- * 瓜瓜陪伴微信小程序 - 主入口文件（女性审美优化版）
- * 
+ * 瓜瓜陪伴微信小程序 - 主入口文件
+ *
  * @author 玄枢
  * @date 2026-03-15
  * @description 小程序全局配置和生命周期管理
- * @update 2026-03-15 - 添加 AI 命名功能首次启动检测
- * @update 女性审美优化：功能名称全面更新
  */
 
 // 引入 AI 名字管理工具
@@ -28,20 +26,20 @@ App({
    */
   onLaunch() {
     console.log('瓜瓜陪伴小程序启动啦~ 🐾');
-    
+
     // 初始化云开发环境
     wx.cloud.init({
       env: 'cloud1-0ga8zde717e08345',
       traceUser: true
     });
     console.log('云开发已初始化 ☁️');
-    
+
     // 检查 AI 名字（首次启动检测）
     this.checkAiName();
-    
+
     // 检查登录状态
     this.checkLoginStatus();
-    
+
     // 初始化本地存储数据
     this.initLocalStorage();
   },
@@ -52,7 +50,7 @@ App({
    */
   checkAiName() {
     const hasName = aiNameUtil.hasName();
-    
+
     if (!hasName) {
       console.log('首次启动，跳转到命名页面~');
       // 重定向到命名页面
@@ -87,54 +85,15 @@ App({
     if (!wx.getStorageSync('chatHistory')) {
       wx.setStorageSync('chatHistory', []);
     }
-    
+
     // 初始化心情记录存储
     if (!wx.getStorageSync('moodRecords')) {
       wx.setStorageSync('moodRecords', []);
     }
-    
+
     // 初始化成就记录存储
     if (!wx.getStorageSync('achievements')) {
       wx.setStorageSync('achievements', []);
     }
-  },
-
-  /**
-   * 全局工具方法：显示加载提示
-   */
-  showLoading(title = '加载中...') {
-    wx.showLoading({
-      title,
-      mask: true
-    });
-  },
-
-  /**
-   * 全局工具方法：隐藏加载提示
-   */
-  hideLoading() {
-    wx.hideLoading();
-  },
-
-  /**
-   * 全局工具方法：显示成功提示
-   */
-  showSuccess(title) {
-    wx.showToast({
-      title,
-      icon: 'success',
-      duration: 2000
-    });
-  },
-
-  /**
-   * 全局工具方法：显示错误提示
-   */
-  showError(title) {
-    wx.showToast({
-      title,
-      icon: 'none',
-      duration: 2000
-    });
   }
 });

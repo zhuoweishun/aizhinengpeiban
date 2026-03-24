@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "哄睡小故事"
+  "navigationBarTitleText": "哄睡故事",
+  "navigationBarBackgroundColor": "#9FA8DA",
+  "navigationBarTextStyle": "white"
 }

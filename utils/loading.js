@@ -70,10 +70,74 @@ const showSuccessMessage = (title) => {
   });
 };
 
+/**
+ * 显示错误消息
+ * @param {string} title - 错误提示文字
+ */
+const showErrorMessage = (title) => {
+  wx.showToast({
+    title: title,
+    icon: 'none',
+    duration: 2000
+  });
+};
+
+/**
+ * 轻触反馈
+ * @description 提供轻微的震动反馈，增强交互体验
+ */
+const triggerLightVibrate = () => {
+  try {
+    wx.vibrateShort({
+      type: 'light',
+      success: () => {},
+      fail: () => {}
+    });
+  } catch (error) {
+    console.error('震动反馈失败:', error);
+  }
+};
+
+/**
+ * 中度触反馈
+ * @description 提供中度的震动反馈
+ */
+const triggerMediumVibrate = () => {
+  try {
+    wx.vibrateShort({
+      type: 'medium',
+      success: () => {},
+      fail: () => {}
+    });
+  } catch (error) {
+    console.error('震动反馈失败:', error);
+  }
+};
+
+/**
+ * 重触反馈
+ * @description 提供强烈的震动反馈
+ */
+const triggerHeavyVibrate = () => {
+  try {
+    wx.vibrateShort({
+      type: 'heavy',
+      success: () => {},
+      fail: () => {}
+    });
+  } catch (error) {
+    console.error('震动反馈失败:', error);
+  }
+};
+
 module.exports = {
   showLoading,
   hideLoading,
   forceHideLoading,
   showMessage,
-  showSuccessMessage
+  showSuccessMessage,
+  showErrorMessage,
+  triggerLightVibrate,
+  triggerMediumVibrate,
+  triggerHeavyVibrate
 };

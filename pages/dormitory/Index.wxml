@@ -1,0 +1,117 @@
+<!--
+  宿舍页面
+  @description 女生宿舍主页
+-->
+
+<view class="container">
+
+  <!-- 空状态：未加入宿舍 -->
+  <view class="empty-state" wx:if="{{!dormitoryId}}">
+    <text class="empty-icon">🏠</text>
+    <text class="empty-title">还没有宿舍</text>
+    <text class="empty-desc">创建一个专属你的女生宿舍吧</text>
+    <button class="create-btn" bindtap="goToCreate">
+      创建宿舍
+    </button>
+  </view>
+
+  <!-- 宿舍内容 -->
+  <view class="dormitory-content" wx:else>
+    <!-- 宿舍信息 -->
+    <view class="dormitory-header">
+      <text class="dormitory-name">{{dormitory.name}}</text>
+      <text class="dormitory-id">房号：{{dormitory.roomId}}</text>
+    </view>
+
+    <!-- 宿舍成员 -->
+    <view class="members-section">
+      <view class="section-title">
+        <text class="title">👭 宿舍成员</text>
+        <text class="count">{{allMembers.length}}/6</text>
+      </view>
+
+      <view class="members-grid">
+        <block wx:for="{{allMembers}}" wx:key="_id">
+          <view class="member-card" bindtap="viewMember" data-member="{{item}}">
+            <view class="member-avatar">{{item.moodEmoji || '👤'}}</view>
+            <text class="member-name">{{item.customTitle || item.title || item.name}}</text>
+            <text class="member-status" wx:if="{{item.isOnline}}">在线</text>
+          </view>
+        </block>
+
+        <!-- 空位 -->
+        <block wx:for="{{emptySlots}}" wx:key="*this">
+          <view class="member-card empty">
+            <view class="member-avatar">➕</view>
+            <text class="member-name">空位</text>
+          </view>
+        </block>
+      </view>
+
+      <button class="invite-btn" bindtap="goToInvite">
+        邀请舍友
+      </button>
+    </view>
+
+    <!-- 快捷功能 -->
+    <view class="quick-actions">
+      <view class="action-card" bindtap="goToSpace">
+        <text class="action-icon">📝</text>
+        <text class="action-name">宿舍空间</text>
+      </view>
+      <view class="action-card" bindtap="goToGoodnight">
+        <text class="action-icon">🌙</text>
+        <text class="action-name">晚安仪式</text>
+      </view>
+      <view class="action-card" bindtap="goToDormitoryRoom">
+        <text class="action-icon">🎨</text>
+        <text class="action-name">装修宿舍</text>
+      </view>
+      <view class="action-card" bindtap="setMood">
+        <text class="action-icon">😊</text>
+        <text class="action-name">设置心情</text>
+      </view>
+    </view>
+
+    <!-- 今日任务 -->
+    <view class="tasks-section" wx:if="{{todayTasks.length > 0}}">
+      <view class="section-title">
+        <text class="title">📋 今日任务</text>
+      </view>
+
+      <view class="task-list">
+        <block wx:for="{{todayTasks}}" wx:key="taskId">
+          <view class="task-item {{item.completed ? 'completed' : ''}}">
+            <view class="task-icon">{{item.completed ? '✅' : '⬜'}}</view>
+            <view class="task-info">
+              <text class="task-name">{{item.name}}</text>
+              <text class="task-desc">{{item.description}}</text>
+            </view>
+            <button class="complete-btn" wx:if="{{!item.completed}}" bindtap="completeTask" data-taskId="{{item.taskId}}">
+              完成
+            </button>
+            <text class="completed-text" wx:else>已完成</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 最近动态 -->
+    <view class="posts-section" wx:if="{{recentPosts.length > 0}}">
+      <view class="section-title">
+        <text class="title">💬 最近动态</text>
+      </view>
+
+      <view class="post-list">
+        <block wx:for="{{recentPosts}}" wx:key="_id">
+          <view class="post-item">
+            <text class="post-author">{{item.author}}</text>
+            <text class="post-content">{{item.content}}</text>
+            <text class="post-time">{{item.createdAt}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+</view>

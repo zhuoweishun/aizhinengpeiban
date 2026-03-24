@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "今天的小确幸"
+  "navigationBarTitleText": "今日小确幸",
+  "navigationBarBackgroundColor": "#64B5F6",
+  "navigationBarTextStyle": "white"
 }

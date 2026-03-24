@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "邀请舍友",
-  "navigationBarBackgroundColor": "#FF6B81",
-  "navigationBarTextStyle": "white",
-  "backgroundColor": "#FFF5F6",
-  "enablePullDownRefresh": true,
-  "usingComponents": {}
-}

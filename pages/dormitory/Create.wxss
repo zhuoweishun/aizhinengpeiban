@@ -1,0 +1,135 @@
+/**
+ * 创建宿舍页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $bg-page;
+  padding: $page-padding;
+  padding-top: calc($page-padding + env(safe-area-inset-top));
+}
+
+.form-section {
+  background: $bg-primary;
+  border-radius: $radius-xxl;
+  padding: $padding-xl;
+  box-shadow: $shadow-md;
+}
+
+.section-title {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  text-align: center;
+  margin-bottom: $margin-xl;
+}
+
+.form-item {
+  margin-bottom: $margin-lg;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-label {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin-bottom: $gap-md;
+}
+
+.form-input {
+  width: 100%;
+  padding: $padding-sm $padding-md;
+  background: $bg-secondary;
+  border-radius: $radius-md;
+  font-size: $font-size-md;
+  color: $text-primary;
+}
+
+.form-textarea {
+  @extend .form-input;
+  min-height: 160rpx;
+}
+
+/* 风格选择 */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gap-md;
+}
+
+.style-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-sm;
+  padding: $padding-lg $padding-sm;
+  background: $bg-secondary;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+
+  &.active {
+    background: linear-gradient(135deg, rgba($primary-color, 0.15) 0%, rgba($primary-light, 0.15) 100%);
+    border: 2rpx solid rgba($primary-color, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.style-icon {
+  font-size: 48rpx;
+}
+
+.style-name {
+  font-size: $font-size-xs;
+  color: $text-primary;
+}
+
+.form-tip {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+  background: rgba($primary-color, 0.08);
+  padding: $padding-sm $padding-md;
+  border-radius: $radius-md;
+  margin-top: $margin-lg;
+}
+
+.tip-icon {
+  font-size: $font-size-lg;
+}
+
+.tip-text {
+  font-size: $font-size-xs;
+  color: $primary-color;
+  flex: 1;
+}
+
+.action-section {
+  margin-top: $margin-xl;
+}
+
+.create-btn {
+  width: 100%;
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  padding: $padding-lg;
+  border-radius: $radius-lg;
+  border: none;
+  box-shadow: $shadow-primary-lg;
+
+  &::after {
+    border: none;
+  }
+}

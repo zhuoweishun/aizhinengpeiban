@@ -1,0 +1,171 @@
+/**
+ * 图标规范
+ * @description 统一 Icon 使用规范
+ *
+ * 图标风格：可爱、简洁、统一
+ * 使用方式：优先使用 emoji 和 Unicode 字符
+ */
+
+/* ========== 功能性图标 ========== */
+/* 导航类 */
+$icon-home: '🏠';
+$icon-back: '←';
+$icon-forward: '→';
+$icon-close: '×';
+$icon-menu: '☰';
+$icon-more: '⋯';
+$icon-check: '✓';
+$icon-cross: '×';
+
+/* 操作类 */
+$icon-edit: '✏️';
+$icon-delete: '🗑️';
+$icon-share: '📤';
+$icon-download: '📥';
+$icon-upload: '☁️';
+$icon-refresh: '🔄';
+$icon-settings: '⚙️';
+$icon-search: '🔍';
+$icon-filter: '🔽';
+$icon-sort: '↕️';
+
+/* 状态类 */
+$icon-success: '✅';
+$icon-warning: '⚠️';
+$icon-error: '❌';
+$icon-info: 'ℹ️';
+$icon-star: '⭐';
+$icon-heart: '❤️';
+$icon-like: '👍';
+$icon-favorite: '⭐';
+
+/* 媒体类 */
+$icon-play: '▶️';
+$icon-pause: '⏸️';
+$icon-stop: '⏹️';
+$icon-volume: '🔊';
+$icon-mute: '🔇';
+$icon-camera: '📷';
+$icon-image: '🖼️';
+
+/* ========== 业务图标 ========== */
+/* 用户相关 */
+$icon-user: '👤';
+$icon-users: '👥';
+$icon-avatar: '👤';
+$icon-profile: '👤';
+$icon-vip: '👑';
+
+/* 任务相关 */
+$icon-task: '📋';
+$icon-daily-task: '📅';
+$icon-weekly-task: '📆';
+$icon-complete: '✅';
+$icon-claim: '🎁';
+
+/* 积分相关 */
+$icon-points: '💎';
+$icon-starlight: '🌟';
+$icon-crystal: '💎';
+$icon-gift: '🎁';
+$icon-reward: '🏆';
+$icon-coupon: '🎫';
+
+/* 社交相关 */
+$icon-chat: '💬';
+$icon-message: '💬';
+$icon-comment: '💭';
+$icon-notification: '🔔';
+$icon-notice: '📢';
+
+/* 房间/宿舍相关 */
+$icon-dormitory: '🏠';
+$icon-room: '🚪';
+$icon-member: '👤';
+$icon-invite: '📩';
+
+/* ========== 情感图标 ========== */
+/* 心情图标 */
+$mood-happy: '😊';
+$mood-excited: '🤩';
+$mood-calm: '😌';
+$mood-sad: '😢';
+$mood-angry: '😠';
+$mood-tired: '😫';
+$mood-anxious: '😰';
+$mood-relaxed: '😌';
+
+/* 天气图标（用于心情） */
+$weather-sunny: '☀️';
+$weather-cloudy: '☁️';
+$weather-rainy: '🌧️';
+$weather-stormy: '⛈️';
+$weather-snowy: '❄️';
+$weather-windy: '💨';
+$weather-rainbow: '🌈';
+
+/* ========== 时间图标 ========== */
+$icon-clock: '⏰';
+$icon-time: '🕐';
+$icon-calendar: '📅';
+$icon-date: '📆';
+$icon-history: '📜';
+$icon-recent: '🕐';
+
+/* ========== 物品图标 ========== */
+$icon-decoration: '🎀';
+$icon-furniture: '🪑';
+$icon-plant: '🌿';
+$icon-book: '📖';
+$icon-music: '🎵';
+$icon-food: '🍔';
+$icon-drink: '☕';
+
+/* ========== 动作图标 ========== */
+$icon-sleep: '😴';
+$icon-dream: '💭';
+$icon-think: '🤔';
+$icon-love: '❤️';
+$icon-hug: '🤗';
+$icon-kiss: '😘';
+$icon-wave: '👋';
+
+/* ========== 数字图标 ========== */
+$icon-0: '0️⃣';
+$icon-1: '1️⃣';
+$icon-2: '2️⃣';
+$icon-3: '3️⃣';
+$icon-4: '4️⃣';
+$icon-5: '5️⃣';
+$icon-6: '6️⃣';
+$icon-7: '7️⃣';
+$icon-8: '8️⃣';
+$icon-9: '9️⃣';
+
+/* ========== 图标使用 mixin ========== */
+@mixin icon-size($size: 48rpx) {
+  font-size: $size;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+}
+
+@mixin icon-button($size: 64rpx, $bg: transparent) {
+  width: $size;
+  height: $size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $bg;
+  transition: all 0.2s;
+}
+
+/* ========== 图标尺寸规范 ========== */
+$icon-size-xs: 32rpx;     // 小图标（标签、徽章）
+$icon-size-sm: 40rpx;     // 较小图标（列表项）
+$icon-size-md: 48rpx;     // 标准图标（按钮、菜单）
+$icon-size-lg: 56rpx;     // 较大图标（卡片）
+$icon-size-xl: 80rpx;     // 大图标（空状态、头部）
+$icon-size-xxl: 100rpx;   // 特大图标（空状态）
+$icon-size-xxxl: 120rpx;  // 超大图标（页面装饰）

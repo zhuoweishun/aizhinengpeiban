@@ -1,66 +1,63 @@
 <!--
-  今天的小确幸页面（原今日总结）
-  @description 合并心情日记和今日亮点，展示每日总结
-  @author 玄枢
-  @date 2026-03-15
-  @update 女性审美优化：今日总结 → 今天的小确幸
+  今日小确幸页面
+  @description 记录今天的小美好
 -->
 
 <view class="container">
-  <!-- 页面标题 -->
+
   <view class="header">
-    <!-- 【女性审美优化】今日总结 → 今天的小确幸 -->
-    <text class="page-title">📊 今天的小确幸</text>
-    <text class="page-date">{{currentDate}}</text>
+    <text class="title">📊 今日小确幸</text>
+    <text class="subtitle">记录生活中的美好瞬间</text>
   </view>
 
-  <!-- 今日心情 -->
-  <view class="section">
-    <view class="section-title">今天的心情</view>
-    <view class="mood-card">
-      <view class="mood-display">
-        <text class="mood-emoji">{{currentMood.emoji}}</text>
-        <text class="mood-text">{{currentMood.text}}</text>
-      </view>
-    </view>
-  </view>
-
-  <!-- 今日亮点 -->
-  <view class="section">
-    <view class="section-title">✨ 今日亮点</view>
-    <view class="highlights-list">
-      <view class="highlight-item" wx:for="{{highlights}}" wx:key="index">
-        <text class="highlight-icon">⭐</text>
-        <text class="highlight-text">{{item}}</text>
-      </view>
-      <view class="add-highlight" bindtap="addHighlight">
-        <text class="add-text">+ 添加亮点</text>
-      </view>
-    </view>
-  </view>
-
-  <!-- 心情日记 -->
-  <view class="section">
-    <view class="section-title">📝 心情日记</view>
-    <view class="diary-card">
-      <textarea 
-        class="diary-input" 
-        placeholder="今天有什么想记录的吗？"
-        value="{{diaryContent}}"
-        bindinput="onDiaryInput"
+  <view class="form-section">
+    <view class="form-item">
+      <text class="form-label">今天发生了什么好事？</text>
+      <textarea
+        class="form-textarea"
+        placeholder="分享一下今天的小确幸吧~"
         maxlength="500"
+        value="{{content}}"
+        bindinput="onContentInput"
       />
-      <view class="diary-actions">
-        <button class="save-btn" bindtap="saveDiary">保存日记</button>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">选择心情</text>
+      <view class="mood-grid">
+        <view
+          class="mood-item {{selectedMood === index ? 'active' : ''}}"
+          wx:for="{{moods}}"
+          wx:key="value"
+          bindtap="selectMood"
+          data-index="{{index}}"
+        >
+          <text class="mood-icon">{{item.emoji}}</text>
+          <text class="mood-label">{{item.label}}</text>
+        </view>
       </view>
+    </view>
+
+    <button class="submit-btn" bindtap="submitHappiness">
+      记录美好瞬间
+    </button>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="history-section" wx:if="{{history.length > 0}}">
+    <text class="section-title">📝 历史记录</text>
+
+    <view class="history-list">
+      <block wx:for="{{history}}" wx:key="id">
+        <view class="history-item">
+          <text class="history-mood">{{item.moodEmoji}}</text>
+          <view class="history-content">
+            <text class="history-text">{{item.content}}</text>
+            <text class="history-time">{{item.createdAt}}</text>
+          </view>
+        </view>
+      </block>
     </view>
   </view>
 
-  <!-- 瓜瓜的鼓励 -->
-  <view class="section">
-    <view class="section-title">💌 瓜瓜的鼓励</view>
-    <view class="encouragement-card">
-      <text class="encouragement-text">{{encouragement}}</text>
-    </view>
-  </view>
 </view>

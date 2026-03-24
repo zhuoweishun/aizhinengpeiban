@@ -1,322 +1,154 @@
 /**
  * 个人中心页面样式
+ * @description 统一 UI 规范
  */
+
+@import '../../styles/variables/_index.scss';
 
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #FFF5F6 0%, #FFE4E8 100%);
-  padding: 40rpx 30rpx 60rpx;
+  background: $bg-secondary;
 }
 
-/* 用户信息头部 */
-.profile-header {
-  text-align: center;
-  padding: 60rpx 30rpx;
-  background: linear-gradient(135deg, #FF6B81 0%, #FF8FA3 100%);
-  border-radius: 24rpx;
-  margin-bottom: 30rpx;
-  box-shadow: 0 8rpx 24rpx rgba(255, 107, 129, 0.3);
+/* ========== 用户信息头部 ========== */
+.user-header {
+  background: $primary-gradient;
+  padding: $padding-xl $page-padding 60rpx;
+  position: relative;
 }
 
-.avatar {
-  font-size: 120rpx;
-  display: block;
-  margin-bottom: 20rpx;
-}
-
-.nickname {
-  display: block;
-  font-size: 40rpx;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 10rpx;
-}
-
-.level {
-  display: block;
-  font-size: 26rpx;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* 统计卡片 */
-.stats-card {
+.user-info {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 40rpx 20rpx;
-  margin-bottom: 30rpx;
+  gap: $gap-md;
+  margin-bottom: $margin-lg;
+}
+
+.user-avatar {
+  font-size: 80rpx;
+  background: rgba($text-white, 0.3);
+  border-radius: $radius-full;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.user-name {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+.user-level {
+  font-size: $font-size-xs;
+  color: $text-white;
+  background: rgba($text-white, 0.2);
+  padding: 4rpx 16rpx;
+  border-radius: $radius-lg;
+  align-self: flex-start;
+}
+
+.user-stats {
+  display: flex;
+  align-items: center;
+  background: rgba($text-white, 0.2);
+  border-radius: $radius-lg;
+  padding: $padding-sm $padding-md;
 }
 
 .stat-item {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4rpx;
+  min-width: 80rpx;
 }
 
 .stat-value {
-  font-size: 48rpx;
-  font-weight: 600;
-  color: #FF6B81;
-  margin-bottom: 8rpx;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-white;
 }
 
 .stat-label {
-  font-size: 24rpx;
-  color: #999;
+  font-size: $font-size-xs;
+  color: rgba($text-white, 0.8);
 }
 
 .stat-divider {
   width: 1rpx;
-  height: 60rpx;
-  background-color: #FFE4E8;
-  margin: 0 20rpx;
+  height: 40rpx;
+  background: rgba($text-white, 0.3);
+  margin: 0 $margin-lg;
 }
 
-/* 宿舍信息卡片 */
-.dormitory-info-card {
-  background: linear-gradient(135deg, #FF6B81 0%, #FF8FA3 100%);
-  color: #fff;
-  padding: 32rpx;
-  margin-bottom: 30rpx;
-  position: relative;
-  overflow: hidden;
-}
-
-.dormitory-info-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 200rpx;
-  height: 200rpx;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-}
-
-.dormitory-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 24rpx;
-  position: relative;
-  z-index: 1;
-}
-
-.dormitory-icon {
-  font-size: 64rpx;
-  margin-right: 20rpx;
-}
-
-.dormitory-details {
-  flex: 1;
-}
-
-.dormitory-name {
-  font-size: 36rpx;
-  font-weight: bold;
-  margin-bottom: 8rpx;
-}
-
-.dormitory-title {
-  font-size: 26rpx;
-  opacity: 0.9;
-}
-
-.dormitory-arrow {
-  font-size: 48rpx;
-  opacity: 0.7;
-}
-
-.dormitory-stats {
-  display: flex;
-  justify-content: space-around;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16rpx;
-  padding: 20rpx 0;
-  position: relative;
-  z-index: 1;
-}
-
-.dormitory-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dormitory-stat .stat-num {
-  font-size: 40rpx;
-  font-weight: bold;
-  margin-bottom: 8rpx;
-}
-
-.dormitory-stat .stat-desc {
-  font-size: 24rpx;
-  opacity: 0.9;
-}
-
-/* 创建宿舍卡片 */
-.join-dormitory-card {
-  text-align: center;
-  padding: 60rpx 40rpx;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2rpx dashed #FF6B81;
-  margin-bottom: 30rpx;
-}
-
-.join-icon {
-  font-size: 80rpx;
-  margin-bottom: 20rpx;
-}
-
-.join-title {
-  font-size: 32rpx;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 12rpx;
-}
-
-.join-desc {
-  font-size: 26rpx;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 24rpx;
-}
-
-.join-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #FF6B81 0%, #FF8FA3 100%);
-  color: #fff;
-  padding: 20rpx 60rpx;
-  border-radius: 40rpx;
-  font-size: 28rpx;
-  font-weight: 600;
-  box-shadow: 0 8rpx 20rpx rgba(255, 107, 129, 0.3);
-}
-
-/* 菜单区块 */
+/* ========== 菜单区域 ========== */
 .menu-section {
-  margin-bottom: 30rpx;
+  margin: $margin-lg $page-margin;
 }
 
-.section-title {
-  font-size: 26rpx;
-  color: #999;
-  margin-bottom: 16rpx;
-  padding-left: 10rpx;
+.menu-title {
+  font-size: $font-size-md;
+  color: $text-muted;
+  margin-bottom: $margin-md;
+  padding-left: 8rpx;
 }
 
 .menu-list {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 20rpx;
+  background: $bg-primary;
+  border-radius: $radius-lg;
   overflow: hidden;
+  box-shadow: $shadow-sm;
 }
 
 .menu-item {
   display: flex;
   align-items: center;
-  padding: 30rpx 24rpx;
-  border-bottom: 1rpx solid #FFF5F6;
-  transition: background-color 0.2s;
-}
+  gap: $gap-md;
+  padding: $padding-md $padding-lg;
+  border-bottom: 1rpx solid $border-light;
+  transition: background $transition-fast;
 
-.menu-item:last-child {
-  border-bottom: none;
-}
+  &:last-child {
+    border-bottom: none;
+  }
 
-.menu-item:active {
-  background-color: #FFF5F6;
+  &:active {
+    background: $bg-secondary;
+  }
 }
 
 .menu-icon {
-  font-size: 44rpx;
-  margin-right: 20rpx;
+  font-size: 40rpx;
 }
 
-.menu-label {
+.menu-name {
   flex: 1;
-  font-size: 28rpx;
-  color: #333;
-}
-
-.menu-value {
-  font-size: 26rpx;
-  color: #999;
+  font-size: $font-size-md;
+  color: $text-primary;
 }
 
 .menu-arrow {
-  font-size: 40rpx;
-  color: #CCC;
-  margin-left: 10rpx;
+  font-size: $font-size-lg;
+  color: $text-muted;
 }
 
-/* 团队信息 */
-.team-info {
+/* ========== 版本信息 ========== */
+.version-info {
   text-align: center;
-  padding: 40rpx 30rpx;
-  margin-bottom: 30rpx;
+  padding: $margin-xl;
+  margin-top: $margin-lg;
 }
 
-.team-title {
-  display: block;
-  font-size: 32rpx;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10rpx;
-}
-
-.team-version {
-  display: block;
-  font-size: 24rpx;
-  color: #999;
-  margin-bottom: 10rpx;
-}
-
-.team-copyright {
-  display: block;
-  font-size: 22rpx;
-  color: #999;
-  margin-bottom: 10rpx;
-}
-
-.team-desc {
-  display: block;
-  font-size: 24rpx;
-  color: #FF6B81;
-}
-
-/* 退出按钮 */
-.logout-btn {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #FF6B81;
-  text-align: center;
-  padding: 28rpx;
-  border-radius: 40rpx;
-  font-size: 30rpx;
-  font-weight: 600;
-  border: 2rpx solid #FF6B81;
-}
-
-.logout-btn:active {
-  opacity: 0.7;
-}
-
-/* 关于弹窗内容 */
-.about-content {
-  padding: 20rpx 0;
-}
-
-.about-text {
-  display: block;
-  font-size: 28rpx;
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 12rpx;
-}
-
-.about-list {
-  display: block;
-  font-size: 28rpx;
-  color: #FF6B81;
-  line-height: 1.8;
-  margin-left: 20rpx;
+.version-text {
+  font-size: $font-size-xs;
+  color: $text-muted;
 }

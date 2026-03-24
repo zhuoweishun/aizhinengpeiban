@@ -1,0 +1,190 @@
+/**
+ * 我的优惠券页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $bg-secondary;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  background: $gradient-coupon;
+  padding: $padding-xl;
+  padding-top: calc($padding-xl + env(safe-area-inset-top));
+}
+
+.coupon-summary {
+  display: flex;
+  align-items: center;
+  background: rgba($bg-primary, 0.3);
+  border-radius: $radius-lg;
+  padding: $padding-md $padding-xl;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.summary-value {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+.summary-label {
+  font-size: $font-size-xs;
+  color: rgba($text-white, 0.9);
+}
+
+.summary-divider {
+  width: 1rpx;
+  height: 40rpx;
+  background: rgba($text-white, 0.3);
+  margin: 0 $margin-lg;
+}
+
+.coupon-list {
+  padding: $page-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+}
+
+.coupon-item {
+  display: flex;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+
+  &.used,
+  &.expired {
+    opacity: 0.6;
+    background: $bg-secondary;
+  }
+}
+
+.coupon-left {
+  background: $gradient-coupon;
+  padding: $padding-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 140rpx;
+}
+
+.coupon-amount {
+  display: flex;
+  align-items: baseline;
+}
+
+.amount-value {
+  font-size: 48rpx;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+.amount-unit {
+  font-size: $font-size-sm;
+  color: rgba($text-white, 0.9);
+  margin-left: 4rpx;
+}
+
+.coupon-condition {
+  font-size: $font-size-xs;
+  color: rgba($text-white, 0.9);
+  margin-top: 8rpx;
+}
+
+.coupon-divider {
+  width: 2rpx;
+  background: $coupon-divider-gradient;
+}
+
+.coupon-right {
+  flex: 1;
+  padding: $padding-sm;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.coupon-name {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.coupon-desc {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.coupon-validity {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.use-btn {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-xs;
+  padding: $padding-xs $padding-md;
+  border-radius: $radius-md;
+  align-self: flex-start;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.used-tag,
+.expired-tag {
+  font-size: $font-size-xs;
+  color: $text-muted;
+  align-self: flex-start;
+  padding: 8rpx $padding-sm;
+  background: $bg-secondary;
+  border-radius: $radius-xs;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx $page-padding;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: $margin-md;
+}
+
+.empty-text {
+  font-size: $font-size-md;
+  color: $text-muted;
+  margin-bottom: $margin-lg;
+}
+
+.get-coupon-btn {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-md;
+  padding: $padding-sm $padding-xl;
+  border-radius: $radius-xxl;
+  border: none;
+  box-shadow: $shadow-primary-md;
+
+  &::after {
+    border: none;
+  }
+}

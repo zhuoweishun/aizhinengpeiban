@@ -1,0 +1,140 @@
+/**
+ * 我的积分页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $gradient-points;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  background: $gradient-points-header;
+  padding: $padding-xl;
+  padding-top: calc($padding-xl + env(safe-area-inset-top));
+}
+
+.points-summary {
+  display: flex;
+  align-items: center;
+  background: rgba($bg-primary, 0.5);
+  border-radius: $radius-lg;
+  padding: $padding-md $padding-xl;
+}
+
+.point-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.point-value {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.point-label {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.point-divider {
+  width: 1rpx;
+  height: 40rpx;
+  background: $black-transparent-10;
+  margin: 0 $margin-xl;
+}
+
+.records-section {
+  padding: $page-padding;
+}
+
+.section-title {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin-bottom: $margin-md;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  background: $bg-primary;
+  padding: $padding-sm;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+}
+
+.record-icon {
+  font-size: 40rpx;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-title {
+  display: block;
+  font-size: $font-size-sm;
+  color: $text-primary;
+  margin-bottom: 6rpx;
+}
+
+.record-time {
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.record-amount {
+  display: flex;
+  align-items: center;
+
+  &.positive .amount-value {
+    color: $success-color;
+  }
+
+  &.negative .amount-value {
+    color: $primary-color;
+  }
+}
+
+.amount-sign {
+  font-size: $font-size-xs;
+  margin-right: 4rpx;
+}
+
+.amount-value {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx $page-padding;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: $margin-md;
+}
+
+.empty-text {
+  font-size: $font-size-sm;
+  color: $text-muted;
+}

@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "装修排行榜",
-  "navigationBarBackgroundColor": "#FFB6C1",
-  "navigationBarTextStyle": "white",
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark",
-  "onReachBottomDistance": 50
-}

@@ -8,6 +8,9 @@ cloud.init({
 const db = cloud.database();
 const _ = db.command;
 
+// 自动分配称呼 - 使用工具函数
+const { autoAssignTitle } = require('../../utils/dormitory-title');
+
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
   const { OPENID } = wxContext;
@@ -101,25 +104,3 @@ exports.main = async (event, context) => {
   }
 };
 
-// 自动分配称呼
-function autoAssignTitle(order) {
-  const titleMap = {
-    1: '大当家',
-    2: '二当家',
-    3: '三当家',
-    4: '四当家',
-    5: '五当家',
-    6: '六当家',
-    7: '七当家',
-    8: '八当家',
-    9: '九当家',
-    10: '十当家'
-  };
-  
-  if (titleMap[order]) {
-    return titleMap[order];
-  }
-  
-  // 超过 10 人，按数字排序
-  return `第${order}舍友`;
-}

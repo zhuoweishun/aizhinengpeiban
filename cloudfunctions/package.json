@@ -1,0 +1,11 @@
+{
+  "name": "guagua-cloudfunctions",
+  "version": "2.0.0",
+  "description": "瓜瓜陪伴小程序 - 云函数统一依赖",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "node-fetch": "^2.6.7"
+  },
+  "author": "瓜瓜陪伴团队",
+  "license": "MIT"
+}

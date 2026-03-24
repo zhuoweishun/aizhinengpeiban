@@ -1,0 +1,74 @@
+<!--
+  创建宿舍页面
+  @description 创建专属宿舍
+-->
+
+<view class="container">
+
+  <view class="form-section">
+    <text class="section-title">创建你的女生宿舍</text>
+
+    <view class="form-item">
+      <text class="form-label">宿舍名称</text>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入宿舍名称"
+        maxlength="20"
+        value="{{dormitoryName}}"
+        bindinput="onNameInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">房间号</text>
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入房间号"
+        maxlength="10"
+        value="{{roomId}}"
+        bindinput="onRoomInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">宿舍简介</text>
+      <textarea
+        class="form-textarea"
+        placeholder="介绍一下你们的宿舍吧（可选）"
+        maxlength="200"
+        value="{{description}}"
+        bindinput="onDescInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">选择风格</text>
+      <view class="style-grid">
+        <view
+          class="style-item {{selectedStyle === index ? 'active' : ''}}"
+          wx:for="{{styles}}"
+          wx:key="value"
+          bindtap="selectStyle"
+          data-index="{{index}}"
+        >
+          <text class="style-icon">{{item.icon}}</text>
+          <text class="style-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-tip">
+      <text class="tip-icon">ℹ️</text>
+      <text class="tip-text">创建后可以邀请舍友加入，最多支持 6 人</text>
+    </view>
+  </view>
+
+  <view class="action-section">
+    <button class="create-btn" bindtap="createDormitory">
+      创建宿舍
+    </button>
+  </view>
+
+</view>

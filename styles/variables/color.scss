@@ -1,0 +1,156 @@
+/**
+ * 颜色变量
+ * @description 全局颜色配置 - 女生喜爱的温暖可爱风格
+ *
+ * 设计理念：
+ * - 主色调采用温暖的粉色系，传递温暖治愈感
+ * - 辅助色使用柔和的马卡龙色系
+ * - 功能色保持清晰但不过于刺眼
+ */
+
+/* ========== 主题色 - 温暖粉色系 ========== */
+$primary-color: #FF6B81;        // 主色调（温暖珊瑚粉）
+$primary-light: #FF8FA3;        // 浅粉色（樱花粉）
+$primary-lighter: #FFB6C1;      // 极浅粉（玫瑰石英粉）
+$primary-dark: #E65A6F;         // 深粉色
+$primary-gradient: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+
+/* ========== 辅助色 - 马卡龙色系 ========== */
+$secondary-color: #FFE4E8;      // 浅粉背景（樱花背景）
+$accent-peach: #FFDAB9;         // 蜜桃色
+$accent-lavender: #E6E6FA;      // 淡紫色
+$accent-mint: #C1F0DC;          // 薄荷绿
+$accent-lemon: #FFF5BA;         // 柠檬黄
+$accent-sky: #B8E6F5;           // 天空蓝
+
+/* ========== 功能色 ========== */
+$success-color: #76C893;        // 成功绿（柔和薄荷绿）
+$warning-color: #FFB347;        // 警告橙（柔和橙）
+$error-color: #FF8A8A;          // 错误红（柔和粉红包）
+$info-color: #87CEEB;           // 信息蓝（天空蓝）
+
+/* ========== 中性色 - 文字颜色 ========== */
+$text-primary: #3D3D3D;         // 主文字（深灰，非纯黑）
+$text-secondary: #6B6B6B;       // 次要文字（中灰）
+$text-muted: #9A9A9A;           // 弱化文字（浅灰）
+$text-disabled: #C9C9C9;        // 禁用文字
+$text-white: #FFFFFF;           // 白色文字
+$text-placeholder: #CCC;        // 占位符文字（浅灰）
+
+/* ========== 背景色 ========== */
+$bg-page: linear-gradient(180deg, #FFF5F6 0%, #FFE4E8 100%);  // 页面背景渐变
+$bg-primary: #FFFFFF;           // 主背景（纯白）
+$bg-secondary: #F8F5F6;         // 次要背景（淡粉灰）
+$bg-tertiary: #F0EDEE;          // 第三背景
+$bg-overlay: rgba(255, 255, 255, 0.9);  // 浮层背景
+$bg-error: #FFF3F3;             // 错误背景（浅红）
+$bg-progress: #F0F0F0;          // 进度条背景
+
+/* ========== 边框色 ========== */
+$border-color: #E8E0E3;         // 边框（粉灰调）
+$border-light: #F2EDEE;         // 浅边框
+$border-divider: #EBE5E7;       // 分割线
+$border-error: #FFCCCC;         // 错误边框（浅红）
+
+/* ========== 渐变色 ========== */
+$gradient-warm: linear-gradient(180deg, #FFF5F6 0%, #FFE4E8 100%);
+$gradient-peach: linear-gradient(135deg, #FFDAB9 0%, #FFE4E8 100%);
+$gradient-lavender: linear-gradient(135deg, #E6E6FA 0%, #F0E6F5 100%);
+$gradient-mint: linear-gradient(135deg, #C1F0DC 0%, #D8F5EA 100%);
+$gradient-sunset: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
+
+/* ========== 业务主题渐变（用于特殊功能页面）========== */
+/* 积分相关 - 橙黄色系 */
+$gradient-points: linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 100%);
+$gradient-points-header: linear-gradient(135deg, #FFB74D 0%, #FFCC80 100%);
+$points-text-primary: #E65100;
+$points-text-secondary: #F57C00;
+
+/* 放松助眠 - 绿色系 */
+$gradient-relax: linear-gradient(180deg, #E8F5E9 0%, #C8E6C9 100%);
+$relax-text-primary: #2E7D32;
+$relax-text-secondary: #66BB6A;
+
+/* 哄睡故事 - 紫色系 */
+$gradient-stories: linear-gradient(180deg, #E8E4F5 0%, #D5C7F0 100%);
+$stories-text-primary: #5C4B8A;
+$stories-text-secondary: #7D6FA8;
+
+/* 心情统计/今日小确幸 - 蓝色系 */
+$gradient-mood: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 100%);
+$mood-text-primary: #1565C0;
+$mood-text-secondary: #42A5F5;
+$mood-gradient-btn: linear-gradient(135deg, #2196F3 0%, #64B5F6 100%);
+
+/* 优惠券 - 红色系 */
+$gradient-coupon: linear-gradient(135deg, #EF5350 0%, #E57373 100%);
+
+/* ========== 主题色透明度变体（用于背景/边框）========== */
+/* 粉色系（主主题）透明变体 */
+$primary-transparent-10: rgba(255, 107, 129, 0.1);
+$primary-transparent-15: rgba(255, 107, 129, 0.15);
+$primary-transparent-20: rgba(255, 107, 129, 0.2);
+$primary-transparent-30: rgba(255, 107, 129, 0.3);
+
+/* 蓝色系（心情主题）透明变体 */
+$blue-transparent-10: rgba(21, 101, 192, 0.1);
+$blue-transparent-15: rgba(21, 101, 192, 0.15);
+$blue-transparent-20: rgba(21, 101, 192, 0.2);
+$blue-transparent-30: rgba(21, 101, 192, 0.3);
+$blue-gradient-transparent: linear-gradient(135deg, rgba(21, 101, 192, 0.15) 0%, rgba(66, 165, 245, 0.15) 100%);
+
+/* 绿色系（放松主题）透明变体 */
+$green-transparent-10: rgba(46, 125, 50, 0.1);
+$green-transparent-20: rgba(46, 125, 50, 0.2);
+$green-gradient-transparent: linear-gradient(135deg, rgba(168, 230, 207, 0.2) 0%, rgba(200, 230, 201, 0.2) 100%);
+
+/* 橙色系（积分主题）透明变体 */
+$orange-transparent-10: rgba(255, 183, 77, 0.1);
+$orange-transparent-20: rgba(255, 183, 77, 0.2);
+$orange-gradient-transparent: linear-gradient(135deg, rgba(255, 183, 77, 0.2) 0%, rgba(255, 204, 128, 0.2) 100%);
+
+/* 紫色系（故事主题）透明变体 */
+$purple-transparent-10: rgba(92, 75, 138, 0.1);
+$purple-transparent-20: rgba(92, 75, 138, 0.2);
+$purple-gradient-transparent: linear-gradient(135deg, rgba(232, 228, 245, 0.5) 0%, rgba(213, 199, 240, 0.5) 100%);
+
+/* 红色系（优惠券主题）透明变体 */
+$red-transparent-30: rgba(239, 83, 80, 0.3);
+$coupon-divider-gradient: linear-gradient(180deg, transparent 0%, rgba(239, 83, 80, 0.3) 50%, transparent 100%);
+
+/* 金色透明变体（用于奖励） */
+$gold-transparent-10: rgba(255, 215, 0, 0.1);
+
+/* 通用黑色透明变体 */
+$black-transparent-10: rgba(0, 0, 0, 0.1);
+
+/* ========== 阴影颜色 ========== */
+$shadow-color: rgba(220, 180, 200, 0.15);  // 粉调阴影
+$shadow-primary: rgba(255, 107, 129, 0.2);  // 主题色阴影
+
+/* ========== 颜色别名（用于替换硬编码值）========== */
+/* 白色系 */
+$white: #FFFFFF;
+$color-white: #FFFFFF;
+
+/* 黑色系 - 使用灰色替代纯黑 */
+$black: #3D3D3D;              // 用深灰替代
+$color-black: #3D3D3D;
+
+/* 灰色系 */
+$gray-100: #F8F5F6;           // 最浅灰
+$gray-200: #F0EDEE;           // 很浅灰
+$gray-300: #E8E0E3;           // 浅灰
+$gray-400: #C9C9C9;           // 中浅灰
+$gray-500: #9A9A9A;           // 中灰
+$gray-600: #6B6B6B;           // 深灰
+$gray-700: #3D3D3D;           // 最深灰
+
+/* 常用硬编码替代 */
+$f5f5f5: #F8F5F6;             // #f5f5f5 替代
+$f9f9f9: #F8F5F6;             // #f9f9f9 替代
+$eee: #E8E0E3;                // #eee 替代
+$ccc: #C9C9C9;                // #ccc 替代
+$999: #9A9A9A;                // #999 替代
+$666: #6B6B6B;                // #666 替代
+$333: #3D3D3D;                // #333 替代

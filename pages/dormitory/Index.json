@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "女生宿舍",
+  "navigationBarBackgroundColor": "#FF6B81",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
+}

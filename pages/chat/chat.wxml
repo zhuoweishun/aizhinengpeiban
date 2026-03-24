@@ -1,130 +1,118 @@
 <!--
-  说说心里话页面（LobeChat 风格优化版 v2.0）
-  @description 聊天界面，用户可与 AI 倾诉心事
-  @update 
-    - 2026-03-22: LobeChat 风格 UI 改造
-    - 渐变色气泡、流畅动画、现代化设计
+  聊天页面
+  @description AI 陪伴聊天
 -->
 
 <view class="container">
-  
-  <!-- 顶部装饰区域（LobeChat 渐变风格） -->
-  <view class="header-decoration">
-    <view class="header-content">
-      <view class="title-section">
-        <text class="main-title">💕 说说心里话</text>
-        <text class="sub-title">和{{aiName}}聊聊你的小秘密~</text>
+
+  <!-- 聊天头部 -->
+  <view class="chat-header">
+    <view class="ai-info">
+      <view class="ai-avatar">🤖</view>
+      <view class="ai-detail">
+        <text class="ai-name">{{aiName}}</text>
+        <text class="ai-status">在线陪伴中</text>
       </view>
-      <view class="mood-quick-select">
-        <text class="mood-label">今天心情如何？</text>
-        <view class="mood-icons">
-          <text class="mood-icon" bindtap="selectMood" data-mood="happy">😊</text>
-          <text class="mood-icon" bindtap="selectMood" data-mood="normal">😐</text>
-          <text class="mood-icon" bindtap="selectMood" data-mood="sad">😢</text>
-          <text class="mood-icon" bindtap="selectMood" data-mood="tired">😫</text>
-          <text class="mood-icon" bindtap="selectMood" data-mood="anxious">😰</text>
-        </view>
+    </view>
+    <view class="header-actions">
+      <view class="action-btn" bindtap="clearChatHistory">
+        <text class="action-icon">🗑️</text>
       </view>
     </view>
   </view>
 
-  <!-- 聊天消息列表 -->
-  <scroll-view 
-    class="chat-scroll" 
-    scroll-y 
+  <!-- 消息列表 -->
+  <scroll-view
+    class="message-list"
+    scroll-y
     scroll-into-view="{{scrollToView}}"
     scroll-with-animation
-    bindscrolltolower="loadMoreMessages"
+    enhanced
+    refresher-enabled
+    bindrefresherrefresh="onRefresh"
   >
-    <view class="chat-list">
-      
-      <!-- 欢迎卡片（LobeChat 风格） -->
-      <view class="welcome-card" wx:if="{{messages.length === 0}}">
-        <view class="welcome-avatar">🐾</view>
-        <view class="welcome-text">
-          <text class="welcome-title">女王大人好呀！</text>
-          <text class="welcome-content">
-            我是{{aiName}}，你的专属陪伴小助手~ 
-          </text>
-          <text class="welcome-content">
-            有什么开心或不开心的事，都可以和我说说哦！💕
-          </text>
+    <view id="anchor"></view>
+
+    <!-- 欢迎消息 (仅在无历史记录时显示) -->
+    <view class="message-item bot-message" wx:if="{{messages.length === 0}}">
+      <view class="message-avatar">🤖</view>
+      <view class="message-content">
+        <text class="message-text">你好呀～我是{{aiName}}，你的专属闺蜜小助手 💕 有什么想和我聊的吗？</text>
+        <text class="message-time">{{currentTime}}</text>
+      </view>
+    </view>
+
+    <!-- 消息列表 -->
+    <block wx:for="{{messages}}" wx:key="id">
+      <!-- 用户消息 -->
+      <view class="message-item user-message" wx:if="{{item.type === 'user'}}" id="msg-{{item.id}}">
+        <view class="message-content">
+          <text class="message-text">{{item.content}}</text>
+          <text class="message-time">{{item.time}}</text>
         </view>
-        <view class="quick-actions">
-          <view class="quick-action-btn" bindtap="quickStart" data-type="happy">
-            <text class="action-icon">✨</text>
-            <text class="action-text">分享开心</text>
-          </view>
-          <view class="quick-action-btn" bindtap="quickStart" data-type="sad">
-            <text class="action-icon">🤗</text>
-            <text class="action-text">求安慰</text>
-          </view>
-          <view class="quick-action-btn" bindtap="quickStart" data-type="chat">
-            <text class="action-icon">💬</text>
-            <text class="action-text">随便聊聊</text>
-          </view>
+        <view class="message-avatar">👤</view>
+      </view>
+
+      <!-- AI 消息 -->
+      <view class="message-item bot-message" wx:else id="msg-{{item.id}}">
+        <view class="message-avatar">🤖</view>
+        <view class="message-content">
+          <text class="message-text">{{item.content}}</text>
+          <text class="message-time">{{item.time}}</text>
         </view>
       </view>
 
-      <!-- 历史消息列表 -->
-      <block wx:for="{{messages}}" wx:key="id">
-        <!-- 用户消息 -->
-        <view class="message-item user-message" wx:if="{{item.type === 'user'}}" id="msg-{{item.id}}">
-          <view class="message-content">
-            <view class="message-bubble user-bubble">
-              <text>{{item.content}}</text>
-            </view>
-            <view class="message-time">{{item.time}}</view>
+      <!-- 错误消息 -->
+      <view class="message-item error-message" wx:if="{{item.type === 'error'}}" id="msg-{{item.id}}">
+        <view class="message-avatar">🥺</view>
+        <view class="message-content error-content">
+          <text class="message-text error-text">{{item.content}}</text>
+          <view class="error-actions" wx:if="{{item.canRetry}}">
+            <text class="retry-btn" bindtap="retryLastMessage">再试一次</text>
           </view>
-          <view class="avatar user-avatar">👤</view>
+          <text class="message-time">{{item.time}}</text>
         </view>
+      </view>
+    </block>
 
-        <!-- 瓜瓜回复 -->
-        <view class="message-item bot-message" wx:else id="msg-{{item.id}}">
-          <view class="avatar bot-avatar">🐾</view>
-          <view class="message-content">
-            <view class="message-bubble bot-bubble">
-              <text>{{item.content}}</text>
-            </view>
-            <view class="message-time">{{item.time}}</view>
-          </view>
-        </view>
-      </block>
-
-      <!-- 加载状态 - LobeChat 风格打字动画 -->
-      <view class="loading-more" wx:if="{{loading}}">
-        <view class="avatar bot-avatar">🐾</view>
-        <view class="typing-indicator">
-          <view class="typing-dot"></view>
-          <view class="typing-dot"></view>
-          <view class="typing-dot"></view>
-        </view>
-        <text class="loading-text">{{aiName}}正在思考中...</text>
+    <!-- 加载中 -->
+    <view class="loading-message" wx:if="{{loading}}">
+      <view class="loading-dots">
+        <text class="dot">.</text>
+        <text class="dot">.</text>
+        <text class="dot">.</text>
       </view>
     </view>
   </scroll-view>
 
-  <!-- 底部输入区域 - LobeChat 风格 -->
-  <view class="input-area">
+  <!-- 快捷心情 (仅在刚开始聊天时显示) -->
+  <view class="quick-moods" wx:if="{{messages.length <= 1}}">
+    <view class="mood-item" bindtap="selectMood" data-mood="happy">😊 开心</view>
+    <view class="mood-item" bindtap="selectMood" data-mood="sad">😢 难过</view>
+    <view class="mood-item" bindtap="selectMood" data-mood="tired">😫 疲惫</view>
+    <view class="mood-item" bindtap="selectMood" data-mood="chat">💬 聊天</view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-bar">
     <view class="input-wrapper">
-      <view class="emoji-btn" bindtap="showEmojiPicker">
-        <text>😊</text>
-      </view>
-      <input 
-        class="message-input" 
-        type="text" 
-        placeholder="和{{aiName}}说些什么..." 
+      <input
+        class="message-input"
+        type="text"
+        placeholder="和{{aiName}}说点什么吧~"
         placeholder-class="input-placeholder"
         value="{{inputValue}}"
         bindinput="onInputChange"
         bindconfirm="sendMessage"
         confirm-type="send"
       />
-      <view 
-        class="send-btn {{inputValue ? 'active' : ''}}" 
-        bindtap="sendMessage"
-      >
-        <text>发送</text>
+      <view class="action-buttons">
+        <view class="action-btn" bindtap="showEmojiPicker">
+          <text class="btn-icon">😊</text>
+        </view>
+        <view class="send-btn" bindtap="sendMessage" wx:if="{{inputValue.trim()}}">
+          <text class="send-icon">➤</text>
+        </view>
       </view>
     </view>
   </view>

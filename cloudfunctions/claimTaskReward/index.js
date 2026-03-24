@@ -8,6 +8,9 @@ cloud.init({
 const db = cloud.database();
 const _ = db.command;
 
+// 获取本周开始时间 - 使用工具函数
+const { getWeekStart } = require('../../utils/dormitory-title');
+
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
   const { OPENID } = wxContext;
@@ -221,16 +224,6 @@ exports.main = async (event, context) => {
     };
   }
 };
-
-// 获取本周开始时间（周一）
-function getWeekStart(timestamp) {
-  const date = new Date(timestamp);
-  const day = date.getDay();
-  const diff = day === 0 ? -6 : (1 - day);
-  date.setDate(date.getDate() + diff);
-  date.setHours(0, 0, 0, 0);
-  return date.getTime();
-}
 
 // 获取任务分类
 function getTaskCategory(taskType) {

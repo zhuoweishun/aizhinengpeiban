@@ -1,0 +1,66 @@
+/**
+ * 圆角变量
+ * @description 全局圆角配置
+ *
+ * 设计规范：
+ * - 统一使用圆角设计，传递温暖可爱感
+ * - 圆角大小与元素尺寸成正比
+ * - 使用统一的圆角层级
+ */
+
+/* ========== 基础圆角（单位：rpx）========== */
+/* 圆角规范：4 的倍数 */
+$radius-none: 0;            // 无圆角
+$radius-xs: 8rpx;           // 8 - 最小圆角
+$radius-sm: 12rpx;          // 12 - 小圆角
+$radius-md: 16rpx;          // 16 - 中等圆角
+$radius-lg: 20rpx;          // 20 - 大圆角
+$radius-xl: 24rpx;          // 24 - 超大圆角
+$radius-xxl: 32rpx;         // 32 - 特大圆角
+$radius-full: 50%;          // 圆形
+
+/* ========== 组件圆角 ========== */
+/* 按钮圆角 */
+$btn-radius: $radius-lg;
+$btn-small-radius: $radius-md;
+$btn-large-radius: $radius-xl;
+$btn-round-radius: $radius-full;
+
+/* 卡片圆角 */
+$card-radius: $radius-xl;
+$card-small-radius: $radius-lg;
+$card-large-radius: $radius-xxl;
+
+/* 输入框圆角 */
+$input-radius: $radius-lg;
+$input-focus-radius: $radius-lg;
+
+/* 头像圆角 */
+$avatar-radius: $radius-full;
+$avatar-small-radius: $radius-full;
+
+/* 徽章圆角 */
+$badge-radius: $radius-full;
+$tag-radius: $radius-md;
+
+/* ========== 特殊圆角 ========== */
+/* 底部圆角（用于浮层、弹窗） */
+$bottom-sheet-radius: $radius-xxl $radius-xxl 0 0;
+$modal-radius: $radius-xxl;
+$popup-radius: $radius-xl;
+
+/* 顶部圆角 */
+$header-radius: 0 0 $radius-xl $radius-xl;
+
+/* 单侧圆角 */
+$top-left-radius: $radius-xl 0 0 0;
+$top-right-radius: 0 $radius-xl 0 0;
+$bottom-left-radius: 0 0 0 $radius-xl;
+$bottom-right-radius: 0 0 $radius-xl 0;
+
+/* ========== 圆角层级命名 ========== */
+/* 使用语义化命名 */
+$radius-component: $radius-md;     // 小组件
+$radius-container: $radius-lg;     // 容器
+$radius-panel: $radius-xl;         // 面板
+$radius-section: $radius-xxl;      // 区块

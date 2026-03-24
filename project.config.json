@@ -1,65 +1,29 @@
 {
-  "description": "瓜瓜陪伴微信小程序 - 温暖治愈系陪伴助手",
+  "description": "瓜瓜陪伴微信小程序 v2.0.0",
   "packOptions": {
     "ignore": [],
     "include": []
   },
   "setting": {
     "lazyCodeLoading": "requiredComponents",
-    "bundle": false,
-    "userConfirmedBundleSwitch": false,
     "urlCheck": true,
-    "scopeDataCheck": true,
-    "coverView": true,
     "es6": true,
     "postcss": true,
-    "compileHotReLoad": false,
-    "lazyloadPlaceholderEnable": false,
-    "preloadBackgroundData": false,
     "minified": true,
-    "autoAudits": false,
-    "newFeature": false,
-    "uglifyFileName": false,
-    "uploadWithSourceMap": true,
-    "useIsolateContext": true,
-    "nodeModules": false,
-    "enhance": true,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "showShadowRootInWxmlPanel": true,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "showES6CompileOption": false,
-    "minifyWXML": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "compileWorklet": false,
-    "localPlugins": false,
-    "disableUseStrict": false,
-    "useCompilerPlugins": false,
-    "condition": false,
-    "swc": false,
-    "disableSWC": true
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "3.15.0",
   "appid": "wxdf677c4371c05d5e",
-  "projectname": "guagua-miniprogram",
+  "projectname": "guagua-companion-v2",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "packNpmManually": false,
-  "packNpmRelationList": [],
-  "simulatorPluginLibVersion": {},
-  "cloudfunctionRoot": "cloudfunctions/",
-  "cloudfunctionTemplateId": "",
-  "cloudbaseRoot": "cloudbaserc.json/",
-  "cloudID": "cloud1-0ga8zde717e08345"
+  "cloudfunctionRoot": "cloudfunctions/"
 }

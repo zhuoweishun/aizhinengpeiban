@@ -7,7 +7,14 @@ cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 });
 
-const DASHSCOPE_API_KEY = 'sk-d43b58a6d0dd486d89b69a38f305483a';
+// 导入配置（API 密钥从云函数环境变量读取）
+const { DASHSCOPE_CONFIG } = require('../config/env');
+
+const DASHSCOPE_API_KEY = DASHSCOPE_CONFIG.apiKey;
+
+if (!DASHSCOPE_API_KEY) {
+  console.error('警告：DASHSCOPE_API_KEY 未配置，请在云函数控制台设置环境变量');
+}
 
 // 晚安图提示词模板（温馨治愈风格）
 const GOODNIGHT_PROMPTS = [

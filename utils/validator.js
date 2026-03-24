@@ -169,10 +169,40 @@ const validatePhone = (phone) => {
   };
 };
 
+/**
+ * 获取优惠券描述
+ * @param {string} couponType - 优惠券类型
+ * @returns {string} 优惠券描述
+ */
+function getCouponDescription(couponType) {
+  const descriptions = {
+    'coupon_50_200': '满¥200 减¥50 优惠券',
+    'coupon_60_400': '满¥400 减¥60 优惠券',
+    'coupon_80_500': '满¥500 减¥80 优惠券',
+    'coupon_100_600': '满¥600 减¥100 优惠券',
+    'coupon_150_1000': '满¥1000 减¥150 优惠券',
+    'coupon_300_2000': '满¥2000 减¥300 优惠券',
+    // 星光值折扣券
+    'starlight_discount_90': '水晶 9 折折扣券（无门槛）',
+    'starlight_discount_85': '水晶 85 折折扣券（无门槛）',
+    'starlight_discount_80': '水晶 8 折折扣券（无门槛）',
+    'starlight_discount_75': '水晶 75 折折扣券（无门槛）',
+    'starlight_discount_70': '水晶 7 折折扣券（无门槛）',
+    // 晶钻抵扣券
+    'crystal_cash_10': '晶钻抵扣券（抵¥10）',
+    'crystal_cash_50': '晶钻抵扣券（抵¥50）',
+    'crystal_cash_120': '晶钻抵扣券（抵¥120）',
+    'crystal_cash_250': '晶钻抵扣券（抵¥250）',
+    'crystal_cash_700': '晶钻抵扣券（抵¥700）'
+  };
+  return descriptions[couponType] || '优惠券';
+}
+
 module.exports = {
   validateDormitoryName,
   validateIntroduction,
   validateInviteCode,
   validateMemberTitle,
-  validatePhone
+  validatePhone,
+  getCouponDescription
 };

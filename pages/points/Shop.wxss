@@ -1,0 +1,131 @@
+/**
+ * 积分商城页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $gradient-points;
+  padding-bottom: 40rpx;
+}
+
+.header {
+  background: $gradient-points-header;
+  padding: $padding-xl;
+  padding-top: calc($padding-xl + env(safe-area-inset-top));
+}
+
+.points-summary {
+  display: flex;
+  align-items: center;
+  background: rgba($bg-primary, 0.5);
+  border-radius: $radius-lg;
+  padding: $padding-md $padding-xl;
+}
+
+.point-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.point-value {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.point-label {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.point-divider {
+  width: 1rpx;
+  height: 40rpx;
+  background: $black-transparent-10;
+  margin: 0 $margin-xl;
+}
+
+.product-list {
+  padding: $padding-xl $page-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $padding-lg;
+  box-shadow: $shadow-md;
+}
+
+.product-image {
+  width: 120rpx;
+  height: 120rpx;
+  background: $orange-gradient-transparent;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-icon {
+  font-size: 60rpx;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin-bottom: 8rpx;
+}
+
+.product-desc {
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-muted;
+  margin-bottom: $margin-sm;
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.price-label {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.price-value {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $primary-color;
+}
+
+.exchange-btn {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-sm;
+  padding: $padding-sm $padding-lg;
+  border-radius: $radius-lg;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}

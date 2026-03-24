@@ -1,0 +1,200 @@
+/**
+ * 装饰商城页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $bg-secondary;
+  padding-bottom: 40rpx;
+}
+
+/* ========== 头部统计 ========== */
+.header {
+  background: $gradient-sunset;
+  padding: $padding-xl;
+  padding-top: calc($padding-xl + env(safe-area-inset-top));
+}
+
+.points-summary {
+  display: flex;
+  align-items: center;
+  background: rgba($bg-primary, 0.5);
+  border-radius: $radius-lg;
+  padding: $padding-sm $padding-md;
+  margin-bottom: $margin-sm;
+}
+
+.point-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.point-value {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.point-label {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+}
+
+.point-divider {
+  width: 1rpx;
+  height: 36rpx;
+  background: $black-transparent-10;
+  margin: 0 $margin-lg;
+}
+
+/* 分类筛选 */
+.category-filter {
+  display: flex;
+  gap: $gap-sm;
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  padding: 10rpx $padding-md;
+  background: rgba($bg-primary, 0.5);
+  border-radius: $radius-lg;
+  font-size: $font-size-xs;
+  color: $text-secondary;
+  transition: all $transition-fast;
+
+  &.active {
+    background: $bg-primary;
+    color: $primary-color;
+    font-weight: $font-weight-semibold;
+    box-shadow: $shadow-sm;
+  }
+}
+
+/* ========== 商品列表 ========== */
+.shop-list {
+  padding: $padding-xl $page-padding;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $gap-md;
+}
+
+.shop-item {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  transition: all $transition-fast;
+
+  &.owned {
+    opacity: 0.7;
+    background: $bg-secondary;
+  }
+
+  &.unaffordable {
+    opacity: 0.8;
+  }
+}
+
+.item-image {
+  height: 200rpx;
+  background: linear-gradient(135deg, rgba($primary-color, 0.1) 0%, rgba($primary-light, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-icon {
+  font-size: 80rpx;
+}
+
+.item-info {
+  padding: $padding-sm;
+}
+
+.item-name {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin-bottom: 8rpx;
+}
+
+.item-desc {
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-muted;
+  margin-bottom: $margin-sm;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-price {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.price-icon {
+  font-size: $font-size-sm;
+}
+
+.price-value {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $primary-color;
+}
+
+.item-action {
+  padding: $padding-sm $padding-md;
+  display: flex;
+  justify-content: center;
+  border-top: 1rpx solid $border-light;
+}
+
+.owned-tag {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.buy-btn {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-xs;
+  padding: 8rpx $padding-md;
+  border-radius: $radius-md;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.unaffordable-tag {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+/* ========== 空状态 ========== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx $page-padding;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: $margin-md;
+}
+
+.empty-text {
+  font-size: $font-size-md;
+  color: $text-muted;
+}

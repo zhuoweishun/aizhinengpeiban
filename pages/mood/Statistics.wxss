@@ -1,0 +1,291 @@
+/**
+ * 心情统计页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $bg-page;
+  padding: $page-padding;
+  padding-bottom: calc($page-padding + env(safe-area-inset-bottom));
+}
+
+/* ========== 头部标题 ========== */
+.header {
+  text-align: center;
+  margin-bottom: $margin-lg;
+}
+
+.title {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin-bottom: 8rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: $font-size-sm;
+  color: $text-muted;
+}
+
+/* ========== 本周心情概览 ========== */
+.week-summary {
+  margin-bottom: $margin-lg;
+}
+
+.summary-card {
+  background: $primary-gradient;
+  border-radius: $radius-xxl;
+  padding: $padding-xl;
+  box-shadow: $shadow-primary-lg;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $margin-md;
+}
+
+.card-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+.card-subtitle {
+  font-size: $font-size-xs;
+  color: $text-white;
+  background: rgba($text-white, 0.2);
+  padding: 8rpx 16rpx;
+  border-radius: $radius-lg;
+}
+
+.mood-weather {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+}
+
+.weather-icon {
+  font-size: 80rpx;
+}
+
+.weather-text {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+/* ========== 心情日历 ========== */
+.mood-calendar {
+  margin-bottom: $margin-lg;
+}
+
+.section-title {
+  margin-bottom: $margin-md;
+}
+
+.section-title .title {
+  font-size: $font-size-lg;
+  color: $text-primary;
+  text-align: left;
+}
+
+.trend-hint {
+  font-size: $font-size-xs;
+  color: $text-muted;
+  margin-left: 12rpx;
+}
+
+.calendar-grid {
+  display: flex;
+  justify-content: space-between;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $padding-md $padding-sm;
+  box-shadow: $shadow-md;
+}
+
+.calendar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap-sm;
+}
+
+.calendar-day {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.calendar-date {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.calendar-mood {
+  font-size: 40rpx;
+  margin-top: 8rpx;
+}
+
+/* ========== 心情统计 ========== */
+.mood-stats {
+  margin-bottom: $margin-lg;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-sm;
+}
+
+.stat-card {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $padding-md;
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+  box-shadow: $shadow-md;
+}
+
+.stat-icon {
+  font-size: 48rpx;
+  flex-shrink: 0;
+}
+
+.stat-info {
+  flex: 1;
+}
+
+.stat-value {
+  display: block;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.stat-label {
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-muted;
+  margin-top: 4rpx;
+}
+
+.stat-bar {
+  width: 120rpx;
+  height: 12rpx;
+  background: $bg-progress;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: $primary-gradient;
+  border-radius: 6rpx;
+  transition: width $transition-normal;
+}
+
+/* ========== 心情趋势 ========== */
+.mood-trend {
+  margin-bottom: $margin-lg;
+}
+
+.trend-list {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $padding-sm;
+  box-shadow: $shadow-md;
+}
+
+.trend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-md $padding-sm;
+  border-bottom: 1rpx solid $border-light;
+}
+
+.trend-item:last-child {
+  border-bottom: none;
+}
+
+.trend-left {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+}
+
+.trend-icon {
+  font-size: 40rpx;
+}
+
+.trend-label {
+  font-size: $font-size-md;
+  color: $text-primary;
+}
+
+.trend-date {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+/* ========== 空状态 ========== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx $page-padding;
+  margin-bottom: $margin-lg;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: $margin-md;
+}
+
+.empty-text {
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  margin-bottom: $margin-sm;
+}
+
+.empty-hint {
+  font-size: $font-size-sm;
+  color: $text-muted;
+}
+
+/* ========== 底部按钮 ========== */
+.footer-action {
+  padding: $padding-md;
+  background: $bg-primary;
+  border-radius: $radius-xxl $radius-xxl 0 0;
+  box-shadow: $shadow-md;  // 底部圆角卡片阴影
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.record-btn {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  padding: $padding-lg;
+  border-radius: $radius-lg;
+  border: none;
+  box-shadow: $shadow-primary-lg;
+}
+
+.record-btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}

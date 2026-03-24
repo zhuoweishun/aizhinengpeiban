@@ -1,151 +1,84 @@
 <!--
-  我的小天地页面（原个人中心）
-  @description 用户信息、设置和关于
-  @author 玄枢
-  @date 2026-03-15
-  @update 女性审美优化：个人中心 → 我的小天地
+  个人中心页面
+  @description 用户个人信息、设置、成就等
 -->
 
 <view class="container">
-  <!-- 用户信息卡片 -->
-  <view class="profile-header">
-    <view class="avatar">👑</view>
-    <text class="nickname">女王大人</text>
-    <text class="level">瓜瓜的专属伙伴</text>
-  </view>
 
-  <!-- 统计卡片 -->
-  <view class="stats-card card">
-    <view class="stat-item">
-      <text class="stat-value">{{stats.chatDays}}</text>
-      <text class="stat-label">陪伴天数</text>
-    </view>
-    <view class="stat-divider"></view>
-    <view class="stat-item">
-      <text class="stat-value">{{stats.chatCount}}</text>
-      <text class="stat-label">聊天次数</text>
-    </view>
-    <view class="stat-divider"></view>
-    <view class="stat-item">
-      <text class="stat-value">{{stats.achievements}}</text>
-      <text class="stat-label">成就数量</text>
-    </view>
-  </view>
-
-  <!-- 宿舍信息卡片 -->
-  <view class="dormitory-info-card card" wx:if="{{dormitoryInfo}}" bindtap="goToDormitory">
-    <view class="dormitory-header">
-      <view class="dormitory-icon">🏠</view>
-      <view class="dormitory-details">
-        <view class="dormitory-name">{{dormitoryInfo.name}}</view>
-        <view class="dormitory-title">我的称呼：{{dormitoryInfo.myTitle}}</view>
+  <!-- 用户信息头部 -->
+  <view class="user-header">
+    <view class="user-info">
+      <view class="user-avatar">👤</view>
+      <view class="user-detail">
+        <text class="user-name">{{userInfo.nickName || '未设置昵称'}}</text>
+        <text class="user-level">Lv.{{userInfo.level || 1}}</text>
       </view>
-      <view class="dormitory-arrow">›</view>
     </view>
-    <view class="dormitory-stats">
-      <view class="dormitory-stat">
-        <text class="stat-num">{{dormitoryInfo.activeDays}}</text>
-        <text class="stat-desc">活跃天数</text>
+    <view class="user-stats">
+      <view class="stat-item">
+        <text class="stat-value">{{userInfo.starlightPoints || 0}}</text>
+        <text class="stat-label">星光值</text>
       </view>
-      <view class="dormitory-stat">
-        <text class="stat-num">{{dormitoryInfo.memberCount}}/{{dormitoryInfo.capacity}}</text>
-        <text class="stat-desc">舍友人数</text>
-      </view>
-      <view class="dormitory-stat">
-        <text class="stat-num">{{dormitoryInfo.level}}</text>
-        <text class="stat-desc">宿舍等级</text>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <text class="stat-value">{{userInfo.crystalDiamonds || 0}}</text>
+        <text class="stat-label">晶钻</text>
       </view>
     </view>
   </view>
 
-  <!-- 未加入宿舍提示 -->
-  <view class="join-dormitory-card card" wx:else bindtap="goToCreateDormitory">
-    <view class="join-icon">🏠</view>
-    <view class="join-title">还没有宿舍？</view>
-    <view class="join-desc">创建一个专属女生宿舍，和舍友们一起打造温馨小窝</view>
-    <view class="join-btn">创建/加入宿舍</view>
-  </view>
-
-  <!-- 功能菜单列表 -->
+  <!-- 功能菜单 -->
   <view class="menu-section">
-    <view class="section-title">设置</view>
-    
+    <view class="menu-title">我的服务</view>
+
     <view class="menu-list">
-      <view class="menu-item" bindtap="openSetting">
+      <view class="menu-item" bindtap="goToMyTasks">
+        <text class="menu-icon">📋</text>
+        <text class="menu-name">我的任务</text>
+        <text class="menu-arrow">→</text>
+      </view>
+
+      <view class="menu-item" bindtap="goToMyCoupons">
+        <text class="menu-icon">🎫</text>
+        <text class="menu-name">我的优惠券</text>
+        <text class="menu-arrow">→</text>
+      </view>
+
+      <view class="menu-item" bindtap="goToMyDecorations">
+        <text class="menu-icon">🎨</text>
+        <text class="menu-name">我的装饰</text>
+        <text class="menu-arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="menu-title">设置</view>
+
+    <view class="menu-list">
+      <view class="menu-item" bindtap="goToSettings">
         <text class="menu-icon">⚙️</text>
-        <text class="menu-label">通用设置</text>
-        <text class="menu-arrow">›</text>
+        <text class="menu-name">设置</text>
+        <text class="menu-arrow">→</text>
       </view>
-      
-      <view class="menu-item" bindtap="toggleNotification">
-        <text class="menu-icon">🔔</text>
-        <text class="menu-label">消息通知</text>
-        <text class="menu-value">{{notificationEnabled ? '已开启' : '已关闭'}}</text>
-      </view>
-      
-      <view class="menu-item" bindtap="clearCache">
-        <text class="menu-icon">🗑️</text>
-        <text class="menu-label">清除缓存</text>
-        <text class="menu-value">{{cacheSize}}</text>
-      </view>
-    </view>
-  </view>
 
-  <!-- 关于 AI -->
-  <view class="menu-section">
-    <view class="section-title">关于</view>
-    
-    <view class="menu-list">
-      <view class="menu-item" bindtap="showAbout">
+      <view class="menu-item" bindtap="goToAbout">
         <text class="menu-icon">ℹ️</text>
-        <text class="menu-label">关于{{aiName}}陪伴</text>
-        <text class="menu-arrow">›</text>
+        <text class="menu-name">关于我们</text>
+        <text class="menu-arrow">→</text>
       </view>
-      
-      <view class="menu-item" bindtap="checkUpdate">
-        <text class="menu-icon">🔄</text>
-        <text class="menu-label">检查更新</text>
-        <text class="menu-value">v1.0.0</text>
-      </view>
-      
-      <view class="menu-item" bindtap="giveFeedback">
+
+      <view class="menu-item" bindtap="goToFeedback">
         <text class="menu-icon">💬</text>
-        <text class="menu-label">意见反馈</text>
-        <text class="menu-arrow">›</text>
+        <text class="menu-name">意见反馈</text>
+        <text class="menu-arrow">→</text>
       </view>
     </view>
   </view>
 
-  <!-- 开发团队信息 -->
-  <view class="team-info card">
-    <text class="team-title">🐾 {{aiName}}陪伴</text>
-    <text class="team-version">Version 1.0.0</text>
-    <text class="team-copyright">© 2026 为女王大人定制</text>
-    <text class="team-desc">温暖治愈系陪伴助手</text>
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text class="version-text">Version 1.0.0</text>
   </view>
 
-  <!-- 退出登录按钮 -->
-  <view class="logout-btn" bindtap="logout">
-    <text>退出登录</text>
-  </view>
 </view>
-
-<!-- 关于弹窗 -->
-<van-dialog
-  id="van-dialog"
-  show="{{showAboutDialog}}"
-  title="关于{{aiName}}陪伴"
-  confirm-button-text="知道啦"
-  confirm-button-color="#FF6B81"
-  bind:confirm="closeAbout"
->
-  <view class="about-content">
-    <text class="about-text">{{aiName}}陪伴是一款专为女王大人定制的温暖治愈系小程序~</text>
-    <text class="about-text">在这里，你可以：</text>
-    <text class="about-list">• 和{{aiName}}倾诉心事</text>
-    <text class="about-list">• 记录每日亮点</text>
-    <text class="about-list">• 听睡前故事</text>
-    <text class="about-list">• 进行放松练习</text>
-    <text class="about-text">{{aiName}}会一直陪着你哦！💕</text>
-  </view>
-</van-dialog>

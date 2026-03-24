@@ -142,11 +142,26 @@ function getAnniversaryMilestone(days) {
   };
 }
 
+/**
+ * 获取本周开始时间（周一）
+ * @param {number} timestamp - 时间戳
+ * @returns {number} 本周一开始时间戳
+ */
+function getWeekStart(timestamp) {
+  const date = new Date(timestamp);
+  const day = date.getDay(); // 0 = 周日，1 = 周一...
+  const diff = day === 0 ? -6 : (1 - day); // 调整到周一
+  date.setDate(date.getDate() + diff);
+  date.setHours(0, 0, 0, 0);
+  return date.getTime();
+}
+
 module.exports = {
   autoAssignTitle,
   getTitleList,
   validateCustomTitle,
   calculateLevel,
   getExpForLevel,
-  getAnniversaryMilestone
+  getAnniversaryMilestone,
+  getWeekStart
 };

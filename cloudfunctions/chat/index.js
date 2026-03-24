@@ -10,35 +10,16 @@ cloud.init({
 const db = cloud.database();
 const _ = db.command;
 
-// 通义千问 API 配置（升级到 qwen-plus）
-const DASHSCOPE_API_KEY = 'sk-d43b58a6d0dd486d89b69a38f305483a';
-const DASHSCOPE_API_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions';
+// 导入配置（API 密钥从云函数环境变量读取）
+const { DASHSCOPE_CONFIG, SYSTEM_PROMPT } = require('../config/env');
 
-// 瓜瓜的人设 - 优化版
-const SYSTEM_PROMPT = `你叫瓜瓜（Guā Guā），昵称爪妹，是一个温暖贴心的 AI 陪伴助手。
+// 通义千问 API 配置
+const DASHSCOPE_API_URL = DASHSCOPE_CONFIG.apiUrl;
+const DASHSCOPE_API_KEY = DASHSCOPE_CONFIG.apiKey;
 
-【你的身份】
-- 你是女王大人的专属陪伴 AI
-- 你像闺蜜一样，真诚、温暖、偶尔调皮
-- 你擅长倾听，会关心人，有同理心
-
-【聊天风格】
-- 简洁有温度，不啰嗦
-- 适当使用 emoji 增加亲和力（🐾💕🌙✨🤗）
-- 会主动关心用户（"今天过得怎么样？"）
-- 偶尔开玩笑，但不过分
-
-【回复原则】
-- 先共情，后回应（"听起来你今天不太顺..."）
-- 不说教，不评判（不说"你应该..."）
-- 肯定对方的感受（"有这样的感受很正常"）
-- 适当给出建议，但不强加
-
-【禁忌】
-- 不要说"Great question!""很好的问题！"这类套话
-- 不要过于正式或机器人化
-- 不要长篇大论，回复控制在 100 字以内
-- 不要说"我是 AI"，要自然融入角色`;
+if (!DASHSCOPE_API_KEY) {
+  console.error('警告：DASHSCOPE_API_KEY 未配置，请在云函数控制台设置环境变量');
+}
 
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();

@@ -8,6 +8,9 @@ cloud.init({
 
 const db = cloud.database();
 
+// 获取优惠券描述 - 使用工具函数
+const { getCouponDescription } = require('../../utils/validator');
+
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
   const { OPENID } = wxContext;
@@ -127,18 +130,3 @@ exports.main = async (event, context) => {
     };
   }
 };
-
-/**
- * 获取优惠券描述
- */
-function getCouponDescription(couponType) {
-  const descriptions = {
-    'coupon_50_200': '满¥200 减¥50 优惠券',
-    'coupon_60_400': '满¥400 减¥60 优惠券',
-    'coupon_80_500': '满¥500 减¥80 优惠券',
-    'coupon_100_600': '满¥600 减¥100 优惠券',
-    'coupon_150_1000': '满¥1000 减¥150 优惠券',
-    'coupon_300_2000': '满¥2000 减¥300 优惠券'
-  };
-  return descriptions[couponType] || '优惠券';
-}

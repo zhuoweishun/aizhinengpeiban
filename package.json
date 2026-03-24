@@ -1,0 +1,25 @@
+{
+  "name": "guagua-companion",
+  "version": "2.0.0",
+  "description": "瓜瓜陪伴微信小程序 - 温暖治愈系陪伴助手",
+  "private": true,
+  "scripts": {
+    "lint": "eslint cloudfunctions/ --ext .js",
+    "lint:fix": "eslint cloudfunctions/ --ext .js --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --reporters=default --reporters=jest-junit"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/wechat-miniprogram": "^3.4.8",
+    "eslint": "^9.17.0",
+    "jest": "^30.3.0",
+    "miniprogram-automator": "^0.12.1",
+    "miniprogram-simulate": "^1.6.1",
+    "ts-jest": "^29.4.6"
+  },
+  "author": "瓜瓜陪伴团队",
+  "license": "MIT"
+}

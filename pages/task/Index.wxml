@@ -1,0 +1,137 @@
+<!--
+  任务页面
+  @description 每日任务、每周任务、宿舍任务
+-->
+
+<view class="container">
+
+  <!-- 头部统计 -->
+  <view class="header">
+    <view class="points-summary">
+      <view class="point-item">
+        <text class="point-value">{{userPoints.starlight}}</text>
+        <text class="point-label">星光值</text>
+      </view>
+      <view class="point-divider"></view>
+      <view class="point-item">
+        <text class="point-value">{{userPoints.crystal}}</text>
+        <text class="point-label">晶钻</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 每日任务 -->
+  <view class="task-section">
+    <view class="section-title">
+      <text class="title">📋 每日任务</text>
+      <text class="hint">每日刷新</text>
+    </view>
+
+    <view class="task-list">
+      <block wx:for="{{dailyTasks}}" wx:key="taskId">
+        <view class="task-item {{item.completed ? 'completed' : ''}}">
+          <view class="task-left">
+            <view class="task-icon">{{item.completed ? '✅' : '⬜'}}</view>
+            <view class="task-info">
+              <text class="task-name">{{item.name}}</text>
+              <text class="task-desc">{{item.description}}</text>
+              <view class="task-progress" wx:if="{{!item.completed}}">
+                <text class="progress-text">{{item.completedCount}}/{{item.requirement.target}}</text>
+                <view class="progress-bar">
+                  <view class="progress-fill" style="width: {{(item.completedCount / item.requirement.target) * 100}}%"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="task-reward">
+            <text class="reward-icon">{{item.rewardType === 'starlight' ? '🌟' : '💎'}}</text>
+            <text class="reward-value">+{{item.reward}}</text>
+          </view>
+          <view class="task-action">
+            <button class="claim-btn" wx:if="{{item.completed && !item.claimed}}" bindtap="claimReward" data-index="{{index}}">
+              领取
+            </button>
+            <text class="claimed-text" wx:elif="{{item.claimed}}">已领取</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 每周任务 -->
+  <view class="task-section">
+    <view class="section-title">
+      <text class="title">📆 每周任务</text>
+      <text class="hint">周一刷新</text>
+    </view>
+
+    <view class="task-list">
+      <block wx:for="{{weeklyTasks}}" wx:key="taskId">
+        <view class="task-item {{item.completed ? 'completed' : ''}}">
+          <view class="task-left">
+            <view class="task-icon">{{item.completed ? '✅' : '⬜'}}</view>
+            <view class="task-info">
+              <text class="task-name">{{item.name}}</text>
+              <text class="task-desc">{{item.description}}</text>
+              <view class="task-progress" wx:if="{{!item.completed}}">
+                <text class="progress-text">{{item.completedCount}}/{{item.requirement.target}}</text>
+                <view class="progress-bar">
+                  <view class="progress-fill" style="width: {{(item.completedCount / item.requirement.target) * 100}}%"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="task-reward">
+            <text class="reward-icon">{{item.rewardType === 'starlight' ? '🌟' : '💎'}}</text>
+            <text class="reward-value">+{{item.reward}}</text>
+          </view>
+          <view class="task-action">
+            <button class="claim-btn" wx:if="{{item.completed && !item.claimed}}" bindtap="claimReward" data-index="{{index}}">
+              领取
+            </button>
+            <text class="claimed-text" wx:elif="{{item.claimed}}">已领取</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 宿舍任务 -->
+  <view class="task-section">
+    <view class="section-title">
+      <text class="title">🏠 宿舍任务</text>
+      <text class="hint">和舍友一起完成</text>
+    </view>
+
+    <view class="task-list">
+      <block wx:for="{{dormitoryTasks}}" wx:key="taskId">
+        <view class="task-item {{item.completed ? 'completed' : ''}}">
+          <view class="task-left">
+            <view class="task-icon">{{item.completed ? '✅' : '⬜'}}</view>
+            <view class="task-info">
+              <text class="task-name">{{item.name}}</text>
+              <text class="task-desc">{{item.description}}</text>
+              <view class="task-progress" wx:if="{{!item.completed}}">
+                <text class="progress-text">{{item.completedCount}}/{{item.requirement.target}}</text>
+                <view class="progress-bar">
+                  <view class="progress-fill" style="width: {{(item.completedCount / item.requirement.target) * 100}}%"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="task-reward">
+            <text class="reward-icon">{{item.rewardType === 'starlight' ? '🌟' : '💎'}}</text>
+            <text class="reward-value">+{{item.reward}}</text>
+          </view>
+          <view class="task-action">
+            <button class="claim-btn" wx:if="{{item.completed && !item.claimed}}" bindtap="claimReward" data-index="{{index}}">
+              领取
+            </button>
+            <text class="claimed-text" wx:elif="{{item.claimed}}">已领取</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+</view>

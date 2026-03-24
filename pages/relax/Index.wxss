@@ -1,0 +1,84 @@
+/**
+ * 放松助眠页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $gradient-relax;
+  padding-bottom: 40rpx;
+}
+
+/* ========== 头部 ========== */
+.header {
+  text-align: center;
+  padding: $padding-xl $page-padding $padding-md;
+}
+
+.title {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $relax-text-primary;
+  margin-bottom: $margin-sm;
+}
+
+.subtitle {
+  display: block;
+  font-size: $font-size-sm;
+  color: $relax-text-secondary;
+}
+
+/* ========== 功能列表 ========== */
+.function-list {
+  padding: 0 $page-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+}
+
+.function-card {
+  display: flex;
+  align-items: center;
+  gap: $gap-lg;
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  padding: $padding-lg $padding-md;
+  box-shadow: $shadow-md;
+  transition: all $transition-fast;
+
+  &:active {
+    transform: scale(0.98);
+    background: $green-gradient-transparent;
+  }
+}
+
+.card-icon {
+  font-size: 56rpx;
+  flex-shrink: 0;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.card-name {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.card-desc {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.card-arrow {
+  font-size: 40rpx;
+  color: $text-muted;
+}

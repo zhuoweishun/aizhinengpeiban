@@ -1,0 +1,74 @@
+<!--
+  装饰商城页面
+  @description 购买宿舍装饰品
+-->
+
+<view class="container">
+
+  <!-- 头部统计 -->
+  <view class="header">
+    <view class="points-summary">
+      <view class="point-item">
+        <text class="point-value">{{userPoints.starlight}}</text>
+        <text class="point-label">星光值</text>
+      </view>
+      <view class="point-divider"></view>
+      <view class="point-item">
+        <text class="point-value">{{userPoints.crystal}}</text>
+        <text class="point-label">晶钻</text>
+      </view>
+    </view>
+
+    <!-- 分类筛选 -->
+    <view class="category-filter">
+      <view class="filter-item {{currentCategory === 'all' ? 'active' : ''}}" bindtap="selectCategory" data-category="all">
+        全部
+      </view>
+      <view class="filter-item {{currentCategory === 'furniture' ? 'active' : ''}}" bindtap="selectCategory" data-category="furniture">
+        家具
+      </view>
+      <view class="filter-item {{currentCategory === 'wall' ? 'active' : ''}}" bindtap="selectCategory" data-category="wall">
+        壁纸
+      </view>
+      <view class="filter-item {{currentCategory === 'floor' ? 'active' : ''}}" bindtap="selectCategory" data-category="floor">
+        地板
+      </view>
+      <view class="filter-item {{currentCategory === 'decoration' ? 'active' : ''}}" bindtap="selectCategory" data-category="decoration">
+        饰品
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="shop-list">
+    <block wx:for="{{items}}" wx:key="itemId">
+      <view class="shop-item {{item.isOwned ? 'owned' : ''}} {{!item.canAfford && !item.isOwned ? 'unaffordable' : ''}}">
+        <view class="item-image">
+          <text class="item-icon">{{item.rarity === 'legendary' ? '👑' : item.rarity === 'epic' ? '💜' : item.rarity === 'rare' ? '💙' : '✨'}}</text>
+        </view>
+        <view class="item-info">
+          <text class="item-name">{{item.name}}</text>
+          <text class="item-desc">{{item.description}}</text>
+          <view class="item-price">
+            <text class="price-icon">{{item.currency === 'starlight' ? '🌟' : '💎'}}</text>
+            <text class="price-value">{{item.price}}</text>
+          </view>
+        </view>
+        <view class="item-action">
+          <text class="owned-tag" wx:if="{{item.isOwned}}">已拥有</text>
+          <button class="buy-btn" wx:elif="{{item.canAfford}}" bindtap="buyItem" data-index="{{index}}">
+            购买
+          </button>
+          <text class="unaffordable-tag" wx:else>积分不足</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{items.length === 0}}">
+    <text class="empty-icon">🛍️</text>
+    <text class="empty-text">暂无商品</text>
+  </view>
+
+</view>

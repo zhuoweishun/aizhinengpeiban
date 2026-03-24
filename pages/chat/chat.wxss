@@ -1,446 +1,294 @@
-/* pages/chat/chat.wxss - LobeChat 风格优化版 v2.0
- * 改造内容：
- * 1. 渐变色气泡
- * 2. 流畅动画效果
- * 3. 圆角设计
- * 4. 阴影效果
- * 5. 加载动画优化
+/**
+ * 聊天页面样式
+ * @description 统一 UI 规范
  */
+
+@import '../../styles/variables/_index.scss';
 
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(180deg, #F5F3FF 0%, #FFFFFF 50%, #FDF4FF 100%);
+  background: $bg-secondary;
 }
 
-/* ===== 顶部装饰区域 ===== */
-.header-decoration {
-  background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 50%, #D946EF 100%);
-  padding: 40rpx 32rpx 32rpx;
-  position: relative;
-  overflow: hidden;
-}
-
-.header-decoration::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  animation: headerGlow 8s ease-in-out infinite;
-}
-
-@keyframes headerGlow {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(10%, 10%); }
-}
-
-.header-content {
-  position: relative;
-  z-index: 1;
-}
-
-.title-section {
-  margin-bottom: 24rpx;
-}
-
-.main-title {
-  display: block;
-  font-size: 44rpx;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 8rpx;
-  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
-}
-
-.sub-title {
-  display: block;
-  font-size: 26rpx;
-  color: rgba(255,255,255,0.85);
-}
-
-.mood-quick-select {
+/* ========== 聊天头部 ========== */
+.chat-header {
+  background: $primary-gradient;
+  padding: $padding-sm $page-padding;
+  box-shadow: $shadow-primary-md;
   display: flex;
-  flex-direction: column;
-  gap: 12rpx;
-}
-
-.mood-label {
-  font-size: 24rpx;
-  color: rgba(255,255,255,0.9);
-}
-
-.mood-icons {
-  display: flex;
-  gap: 16rpx;
-}
-
-.mood-icon {
-  font-size: 44rpx;
-  padding: 12rpx 20rpx;
-  background: rgba(255,255,255,0.2);
-  border-radius: 20rpx;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.mood-icon:active {
-  transform: scale(0.9);
-  background: rgba(255,255,255,0.3);
-}
-
-/* ===== 聊天消息列表 ===== */
-.chat-scroll {
-  flex: 1;
-  padding: 24rpx 0;
-}
-
-.chat-list {
-  padding: 0 24rpx;
-}
-
-/* 欢迎卡片 */
-.welcome-card {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
-  border-radius: 32rpx;
-  padding: 40rpx 32rpx;
-  margin-bottom: 32rpx;
-  box-shadow: 0 8rpx 32rpx rgba(139, 92, 246, 0.12);
-  border: 1rpx solid rgba(139, 92, 246, 0.1);
-  animation: fadeInUp 0.5s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20rpx);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.welcome-avatar {
-  font-size: 80rpx;
-  text-align: center;
-  margin-bottom: 20rpx;
-}
-
-.welcome-text {
-  text-align: center;
-  margin-bottom: 32rpx;
-}
-
-.welcome-title {
-  display: block;
-  font-size: 36rpx;
-  font-weight: 700;
-  color: #1F2937;
-  margin-bottom: 16rpx;
-}
-
-.welcome-content {
-  display: block;
-  font-size: 28rpx;
-  color: #6B7280;
-  line-height: 1.8;
-}
-
-.quick-actions {
-  display: flex;
-  gap: 16rpx;
-  justify-content: center;
-}
-
-.quick-action-btn {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8rpx;
-  padding: 20rpx 28rpx;
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-  border-radius: 20rpx;
-  box-shadow: 0 4rpx 16rpx rgba(139, 92, 246, 0.25);
-  transition: all 0.3s ease;
+  justify-content: space-between;
 }
 
-.quick-action-btn:active {
-  transform: scale(0.95);
-  box-shadow: 0 2rpx 8rpx rgba(139, 92, 246, 0.2);
+.ai-info {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
 }
 
-.action-icon {
-  font-size: 36rpx;
+.ai-avatar {
+  font-size: 48rpx;
 }
 
-.action-text {
-  font-size: 24rpx;
-  color: #FFFFFF;
-  font-weight: 500;
+.ai-detail {
+  display: flex;
+  flex-direction: column;
 }
 
-/* 消息项 */
+.ai-name {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+.ai-status {
+  font-size: $font-size-xs;
+  color: rgba($text-white, 0.9);
+  margin-top: 4rpx;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions .action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-full;
+  background: rgba($text-white, 0.2);
+  transition: all $transition-fast;
+}
+
+.header-actions .action-btn:active {
+  background: rgba($text-white, 0.4);
+  transform: scale(0.9);
+}
+
+.header-actions .action-icon {
+  font-size: $font-size-md;
+}
+
+/* ========== 消息列表 ========== */
+.message-list {
+  flex: 1;
+  padding: $padding-xl $padding-md;
+  padding-bottom: $padding-md;
+}
+
 .message-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 24rpx;
-  animation: messageSlideIn 0.3s ease-out;
+  gap: $gap-md;
+  margin-bottom: $margin-md;
+
+  &.user-message {
+    flex-direction: row-reverse;
+
+    .message-content {
+      background: $primary-gradient;
+
+      .message-text {
+        color: $text-white;
+      }
+    }
+
+    .message-time {
+      text-align: right;
+      color: $text-muted;
+    }
+  }
+
+  &.bot-message {
+    .message-content {
+      background: $bg-primary;
+
+      .message-text {
+        color: $text-primary;
+      }
+    }
+  }
 }
 
-@keyframes messageSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10rpx);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 用户消息 */
-.user-message {
-  flex-direction: row-reverse;
+.message-avatar {
+  font-size: 48rpx;
+  flex-shrink: 0;
 }
 
 .message-content {
   max-width: 70%;
+  padding: $padding-sm $padding-md;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
 }
 
-.message-bubble {
-  padding: 20rpx 28rpx;
-  font-size: 30rpx;
-  line-height: 1.6;
-  position: relative;
-}
-
-/* 用户气泡 - LobeChat 渐变风格 */
-.user-bubble {
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
-  color: #FFFFFF;
-  border-radius: 24rpx 24rpx 6rpx 24rpx;
-  box-shadow: 0 6rpx 20rpx rgba(139, 92, 246, 0.3);
-}
-
-.user-bubble::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-/* AI 气泡 - LobeChat 白色风格 */
-.bot-bubble {
-  background: #FFFFFF;
-  color: #1F2937;
-  border-radius: 24rpx 24rpx 24rpx 6rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
-  border: 1rpx solid #E5E7EB;
+.message-text {
+  display: block;
+  font-size: $font-size-md;
+  line-height: $line-height-normal;
+  word-wrap: break-word;
 }
 
 .message-time {
-  font-size: 22rpx;
-  color: #9CA3AF;
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-muted;
   margin-top: 8rpx;
-  text-align: right;
 }
 
-.user-message .message-time {
-  text-align: right;
-  margin-right: 16rpx;
+/* ========== 错误消息 ========== */
+.error-message {
+  .message-avatar {
+    font-size: 48rpx;
+  }
+
+  .error-content {
+    background: $bg-error;
+    border: 1rpx solid $border-error;
+  }
+
+  .error-text {
+    color: $error-color;
+    font-size: $font-size-sm;
+  }
+
+  .error-actions {
+    margin-top: $margin-sm;
+  }
+
+  .retry-btn {
+    display: inline-block;
+    background: $primary-gradient;
+    color: $text-white;
+    font-size: $font-size-xs;
+    padding: 8rpx 20rpx;
+    border-radius: $radius-md;
+    box-shadow: $shadow-primary-sm;
+  }
+
+  .retry-btn:active {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
 }
 
-.bot-message .message-time {
-  text-align: left;
-  margin-left: 16rpx;
-}
-
-/* 头像 */
-.avatar {
-  font-size: 44rpx;
-  width: 72rpx;
-  height: 72rpx;
+/* ========== 加载中 ========== */
+.loading-message {
   display: flex;
-  align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  flex-shrink: 0;
+  padding: $padding-sm;
 }
 
-.user-avatar {
-  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
-  margin-left: 16rpx;
-  box-shadow: 0 4rpx 12rpx rgba(245, 158, 11, 0.25);
-}
-
-.bot-avatar {
-  background: linear-gradient(135deg, #C4B5FD 0%, #8B5CF6 100%);
-  margin-right: 16rpx;
-  box-shadow: 0 4rpx 12rpx rgba(139, 92, 246, 0.25);
-}
-
-/* ===== 加载动画 - LobeChat 风格 ===== */
-.loading-more {
+.loading-dots {
   display: flex;
-  align-items: center;
-  gap: 16rpx;
-  padding: 24rpx;
-  justify-content: flex-start;
+  gap: $gap-sm;
+  background: $bg-primary;
+  padding: $padding-xs $padding-md;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
 }
 
-.typing-indicator {
+.dot {
+  font-size: 32rpx;
+  color: $text-muted;
+  animation: bounce 1.4s $ease-in-out infinite;
+
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.4s; }
+}
+
+/* ========== 快捷心情 ========== */
+.quick-moods {
   display: flex;
-  gap: 8rpx;
-  align-items: center;
-  background: #FFFFFF;
-  padding: 20rpx 28rpx;
-  border-radius: 24rpx;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
-  border: 1rpx solid #E5E7EB;
+  gap: $gap-md;
+  padding: $padding-md $padding-md;
+  background: $bg-primary;
+  border-top: 1rpx solid $border-light;
 }
 
-.typing-dot {
-  width: 16rpx;
-  height: 16rpx;
-  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
-  border-radius: 50%;
-  animation: typingBounce 1.4s infinite ease-in-out;
-}
+.mood-item {
+  flex: 1;
+  text-align: center;
+  padding: $padding-sm;
+  background: $bg-secondary;
+  border-radius: $radius-lg;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  transition: all $transition-fast;
 
-.typing-dot:nth-child(1) { animation-delay: 0s; }
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes typingBounce {
-  0%, 60%, 100% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-  30% {
-    transform: translateY(-16rpx);
-    opacity: 1;
+  &:active {
+    background: $primary-color;
+    color: $text-white;
+    transform: scale(0.95);
   }
 }
 
-.loading-text {
-  font-size: 26rpx;
-  color: #6B7280;
-  margin-left: 8rpx;
-}
-
-/* ===== 底部输入区域 - LobeChat 风格 ===== */
-.input-area {
-  background: #FFFFFF;
-  padding: 20rpx 24rpx;
-  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
-  box-shadow: 0 -8rpx 32rpx rgba(0, 0, 0, 0.08);
-  position: relative;
-}
-
-.input-area::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1rpx;
-  background: linear-gradient(90deg, transparent 0%, #E5E7EB 50%, transparent 100%);
+/* ========== 输入区域 ========== */
+.input-bar {
+  background: $bg-primary;
+  padding: $padding-sm $padding-md;
+  border-top: 1rpx solid $border-light;
+  padding-bottom: calc($padding-sm + env(safe-area-inset-bottom));
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
-  gap: 16rpx;
-}
-
-.emoji-btn {
-  font-size: 44rpx;
-  padding: 8rpx;
-  opacity: 0.6;
-  transition: all 0.3s ease;
-}
-
-.emoji-btn:active {
-  opacity: 1;
-  transform: scale(1.1);
+  gap: $gap-md;
+  background: $bg-secondary;
+  border-radius: $radius-xxl;
+  padding: $padding-xs $padding-sm;
 }
 
 .message-input {
   flex: 1;
-  background: #F5F3FF;
-  border-radius: 32rpx;
-  padding: 22rpx 32rpx;
-  font-size: 30rpx;
-  color: #1F2937;
-  border: 2rpx solid transparent;
-  transition: all 0.3s ease;
-}
-
-.message-input:focus {
-  background: #FFFFFF;
-  border-color: #8B5CF6;
-  box-shadow: 0 0 0 4rpx rgba(139, 92, 246, 0.1);
+  font-size: $font-size-md;
+  padding: 8rpx 0;
+  max-height: 120rpx;
 }
 
 .input-placeholder {
-  color: #9CA3AF;
+  color: $text-muted;
 }
 
-/* 发送按钮 - LobeChat 渐变风格 */
+.action-buttons {
+  display: flex;
+  gap: $gap-sm;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-full;
+  background: $bg-primary;
+  box-shadow: $shadow-sm;
+}
+
+.btn-icon {
+  font-size: $font-size-lg;
+}
+
 .send-btn {
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-  color: #FFFFFF;
-  font-size: 28rpx;
-  font-weight: 600;
-  padding: 18rpx 32rpx;
-  border-radius: 32rpx;
-  box-shadow: 0 4rpx 16rpx rgba(139, 92, 246, 0.35);
-  transition: all 0.3s ease;
-  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: $radius-full;
+  background: $primary-gradient;
+  box-shadow: $shadow-primary-sm;
 }
 
-.send-btn.active {
-  opacity: 1;
-}
-
-.send-btn.active:active {
-  transform: scale(0.95);
-  box-shadow: 0 2rpx 8rpx rgba(139, 92, 246, 0.25);
-}
-
-/* ===== 滚动条样式 ===== */
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
-/* ===== 深色模式支持 ===== */
-@media (prefers-color-scheme: dark) {
-  .container {
-    background: linear-gradient(180deg, #1F1F1F 0%, #2D2D2D 100%);
-  }
-  
-  .welcome-card {
-    background: linear-gradient(135deg, #2D2D2D 0%, #3D3D3D 100%);
-  }
-  
-  .bot-bubble {
-    background: #2D2D2D;
-    color: #E5E7EB;
-    border-color: #404040;
-  }
-  
-  .message-input {
-    background: #2D2D2D;
-    color: #E5E7EB;
-  }
+.send-icon {
+  font-size: $font-size-md;
+  color: $text-white;
 }

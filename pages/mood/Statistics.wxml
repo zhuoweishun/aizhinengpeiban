@@ -1,0 +1,90 @@
+<!--
+  心情统计页面
+  @description 展示心情变化趋势和统计数据
+-->
+
+<view class="container">
+
+  <!-- 头部标题 -->
+  <view class="header">
+    <text class="title">心情日记 📊</text>
+    <text class="subtitle">记录你的每一个情绪瞬间</text>
+  </view>
+
+  <!-- 本周心情概览 -->
+  <view class="week-summary">
+    <view class="summary-card">
+      <view class="card-header">
+        <text class="card-title">本周心情</text>
+        <text class="card-subtitle">{{weekLabel}}</text>
+      </view>
+      <view class="mood-weather">
+        <text class="weather-icon">{{currentMoodIcon}}</text>
+        <text class="weather-text">{{currentMoodText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 心情日历热力图 -->
+  <view class="mood-calendar">
+    <view class="section-title">
+      <text class="title">近 7 天心情</text>
+    </view>
+    <view class="calendar-grid">
+      <view class="calendar-item" wx:for="{{weekDays}}" wx:key="date">
+        <text class="calendar-day">{{item.day}}</text>
+        <text class="calendar-date">{{item.date}}</text>
+        <text class="calendar-mood">{{item.mood}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 心情统计 -->
+  <view class="mood-stats">
+    <view class="section-title">
+      <text class="title">心情统计</text>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-card" wx:for="{{moodStats}}" wx:key="type">
+        <view class="stat-icon">{{item.icon}}</view>
+        <view class="stat-info">
+          <text class="stat-value">{{item.count}}</text>
+          <text class="stat-label">{{item.label}}</text>
+        </view>
+        <view class="stat-bar">
+          <view class="stat-bar-fill" style="width: {{item.percent}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 心情趋势 -->
+  <view class="mood-trend">
+    <view class="section-title">
+      <text class="title">心情变化</text>
+      <text class="trend-hint">最近 10 条记录</text>
+    </view>
+    <view class="trend-list">
+      <view class="trend-item" wx:for="{{recentRecords}}" wx:key="id">
+        <view class="trend-left">
+          <text class="trend-icon">{{item.icon}}</text>
+          <text class="trend-label">{{item.label}}</text>
+        </view>
+        <text class="trend-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{records.length === 0}}">
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">还没有心情记录哦</text>
+    <text class="empty-hint">在首页点击"心情"开始记录吧~</text>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="footer-action">
+    <button class="record-btn" bindtap="goToRecord">记录今天的心情</button>
+  </view>
+
+</view>

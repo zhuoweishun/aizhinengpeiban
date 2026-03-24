@@ -1,0 +1,68 @@
+/**
+ * 阴影变量
+ * @description 全局阴影配置
+ */
+
+/* 基础阴影 */
+$shadow-xs: 0 1rpx 4rpx rgba(0, 0, 0, 0.04);
+$shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 12rpx 32rpx rgba(0, 0, 0, 0.16);
+
+/* 主题色阴影（粉色系） */
+$shadow-primary-xs: 0 2rpx 8rpx rgba(255, 107, 129, 0.1);
+$shadow-primary-sm: 0 4rpx 12rpx rgba(255, 107, 129, 0.15);
+$shadow-primary-md: 0 6rpx 16rpx rgba(255, 107, 129, 0.2);
+$shadow-primary-lg: 0 8rpx 24rpx rgba(255, 107, 129, 0.25);
+$shadow-primary-xl: 0 12rpx 32rpx rgba(255, 107, 129, 0.3);
+
+/* 卡片阴影 */
+$card-shadow: $shadow-sm;
+$card-shadow-hover: $shadow-md;
+$card-shadow-active: $shadow-xs;
+
+/* 按钮阴影 */
+$button-shadow: $shadow-primary-sm;
+$button-shadow-active: $shadow-primary-xs;
+
+/* 浮层阴影 */
+$overlay-shadow: $shadow-xl;
+$modal-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.2);
+$dropdown-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+
+/* 特殊阴影 */
+$inner-shadow: inset 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+$glow-shadow: 0 0 20rpx rgba(255, 107, 129, 0.5);
+
+/* ========== 业务主题阴影 ========== */
+/* 蓝色系阴影（用于心情/小确幸主题） */
+$shadow-mood-xs: 0 2rpx 8rpx rgba(33, 150, 243, 0.1);
+$shadow-mood-sm: 0 4rpx 12rpx rgba(33, 150, 243, 0.15);
+$shadow-mood-md: 0 6rpx 16rpx rgba(33, 150, 243, 0.2);
+$shadow-mood-lg: 0 8rpx 24rpx rgba(33, 150, 243, 0.25);
+$shadow-mood-xl: 0 12rpx 32rpx rgba(33, 150, 243, 0.3);
+
+/* 绿色系阴影（用于放松/助眠主题） */
+$shadow-relax-xs: 0 2rpx 8rpx rgba(46, 125, 50, 0.1);
+$shadow-relax-sm: 0 4rpx 12rpx rgba(46, 125, 50, 0.15);
+$shadow-relax-md: 0 6rpx 16rpx rgba(46, 125, 50, 0.2);
+$shadow-relax-lg: 0 8rpx 24rpx rgba(46, 125, 50, 0.25);
+
+/* 橙色系阴影（用于积分主题） */
+$shadow-points-xs: 0 2rpx 8rpx rgba(255, 183, 77, 0.1);
+$shadow-points-sm: 0 4rpx 12rpx rgba(255, 183, 77, 0.15);
+$shadow-points-md: 0 6rpx 16rpx rgba(255, 183, 77, 0.2);
+$shadow-points-lg: 0 8rpx 24rpx rgba(255, 183, 77, 0.25);
+
+/* 紫色系阴影（用于故事主题） */
+$shadow-stories-xs: 0 2rpx 8rpx rgba(92, 75, 138, 0.1);
+$shadow-stories-sm: 0 4rpx 12rpx rgba(92, 75, 138, 0.15);
+$shadow-stories-md: 0 6rpx 16rpx rgba(92, 75, 138, 0.2);
+$shadow-stories-lg: 0 8rpx 24rpx rgba(92, 75, 138, 0.25);
+
+/* 红色系阴影（用于优惠券主题） */
+$shadow-coupon-xs: 0 2rpx 8rpx rgba(239, 83, 80, 0.1);
+$shadow-coupon-sm: 0 4rpx 12rpx rgba(239, 83, 80, 0.15);
+$shadow-coupon-md: 0 6rpx 16rpx rgba(239, 83, 80, 0.2);
+$shadow-coupon-lg: 0 8rpx 24rpx rgba(239, 83, 80, 0.25);

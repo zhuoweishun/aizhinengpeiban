@@ -1,0 +1,199 @@
+/**
+ * 任务页面样式
+ * @description 统一 UI 规范
+ */
+
+@import '../../styles/variables/_index.scss';
+
+.container {
+  min-height: 100vh;
+  background: $bg-secondary;
+  padding-bottom: 40rpx;
+}
+
+/* ========== 头部统计 ========== */
+.header {
+  background: $primary-gradient;
+  padding: $padding-xl;
+  padding-top: calc($padding-xl + env(safe-area-inset-top));
+}
+
+.points-summary {
+  display: flex;
+  align-items: center;
+  background: rgba($text-white, 0.2);
+  border-radius: $radius-lg;
+  padding: $padding-md $padding-xl;
+}
+
+.point-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.point-value {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+}
+
+.point-label {
+  font-size: $font-size-xs;
+  color: rgba($text-white, 0.9);
+}
+
+.point-divider {
+  width: 1rpx;
+  height: 40rpx;
+  background: rgba($text-white, 0.3);
+  margin: 0 $margin-xl;
+}
+
+/* ========== 任务区域 ========== */
+.task-section {
+  margin: $margin-md $page-padding;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $margin-md;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+}
+
+.hint {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.task-list {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: $padding-md $padding-md;
+  border-bottom: 1rpx solid $border-light;
+  transition: all $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.completed {
+    background: rgba($primary-color, 0.05);
+    opacity: 0.7;
+  }
+}
+
+.task-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+}
+
+.task-icon {
+  font-size: 40rpx;
+  flex-shrink: 0;
+}
+
+.task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.task-name {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.task-desc {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.task-progress {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+  margin-top: 8rpx;
+}
+
+.progress-text {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12rpx;
+  background: $bg-progress;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: $primary-gradient;
+  border-radius: 6rpx;
+  transition: width $transition-normal;
+}
+
+.task-reward {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 8rpx $padding-sm;
+  background: $gold-transparent-10;
+  border-radius: $radius-md;
+  margin-right: $margin-sm;
+}
+
+.reward-icon {
+  font-size: $font-size-sm;
+}
+
+.reward-value {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+}
+
+.task-action {
+  display: flex;
+  align-items: center;
+}
+
+.claim-btn {
+  background: $primary-gradient;
+  color: $text-white;
+  font-size: $font-size-xs;
+  padding: 10rpx $padding-md;
+  border-radius: $radius-md;
+  border: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+.claimed-text {
+  font-size: $font-size-xs;
+  color: $text-muted;
+}

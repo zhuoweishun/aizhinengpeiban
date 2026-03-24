@@ -1,0 +1,28 @@
+<!--
+  读给你听页面
+  @description 温暖声音读给你听
+-->
+
+<view class="container">
+
+  <view class="header">
+    <text class="title">📖 读给你听</text>
+    <text class="subtitle">用温暖的声音陪伴你</text>
+  </view>
+
+  <view class="content-list">
+    <view class="content-item" wx:for="{{contents}}" wx:key="id">
+      <view class="content-icon">{{item.icon}}</view>
+      <view class="content-info">
+        <text class="content-title">{{item.title}}</text>
+        <text class="content-desc">{{item.description}}</text>
+      </view>
+      <view class="content-action">
+        <button class="play-btn" bindtap="playContent" data-id="{{item.id}}">
+          <text class="play-icon">▶️</text>
+        </button>
+      </view>
+    </view>
+  </view>
+
+</view>

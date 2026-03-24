@@ -1,80 +1,37 @@
 <!--
-  瓜瓜陪伴微信小程序 - 首页（优化版 v2.0）
-  @description 主菜单页面，突出核心功能，场景化入口
-  @date 2026-03-16
-  @update 功能优先级优化：P0 核心功能突出，场景化入口
+  瓜瓜陪伴微信小程序 - 首页
+  @description 主菜单页面，场景化入口
 -->
 
 <view class="container">
-  
-  <!-- 顶部装饰区域 -->
-  <view class="header-decoration">
-    <view class="header-content">
-      <!-- 日期时间 + 用户信息 -->
-      <view class="top-bar">
-        <view class="date-time">
-          <text class="date-text">{{currentDate}}</text>
-          <text class="time-text">{{currentTime}}</text>
-        </view>
-        <view class="user-level" wx:if="{{userLevel}}">
-          <text class="level-text">Lv.{{userLevel}}</text>
-          <text class="level-stars">{{userStars}}</text>
-        </view>
-      </view>
-      
-      <!-- 标题 -->
-      <view class="title-section">
-        <text class="main-title">💕 {{aiName}}陪伴</text>
-        <text class="sub-title">你的专属闺蜜小助手</text>
-      </view>
+
+  <!-- 顶部状态栏 -->
+  <view class="status-bar">
+    <view class="date-time">
+      <text class="date">{{currentDate}}</text>
+      <text class="time">{{currentTime}}</text>
+    </view>
+    <view class="user-info">
+      <text class="level">Lv.{{userLevel}}</text>
     </view>
   </view>
 
-  <!-- 树洞形象展示区域（可互动） -->
+  <!-- 标题区域 -->
+  <view class="header">
+    <text class="main-title">💕 {{aiName}}陪伴</text>
+    <text class="sub-title">你的专属闺蜜小助手</text>
+  </view>
+
+  <!-- 树洞互动区域 -->
   <view class="tree-hole-section">
-    <!-- 顶部状态栏 -->
-    <view class="tree-hole-status">
-      <view class="status-item">
-        <text class="status-icon">📅</text>
-        <text class="status-text">{{currentDate}}</text>
-      </view>
-      <view class="status-item" bindtap="hugTreeHole">
-        <text class="status-icon">💕</text>
-        <text class="status-text">已陪伴{{companyDays}}天</text>
-      </view>
-    </view>
-    
     <view class="tree-hole-image" bindtap="hugTreeHole">
-      <image 
-        class="tree-hole-illustration" 
-        src="/images/treehole/treehole-main.png" 
+      <image
+        class="tree-hole-illustration"
+        src="/images/treehole/main.png"
         mode="aspectFit"
       />
-      <!-- 漂浮装饰 -->
-      <view class="floating-decoration dec-1">💕</view>
-      <view class="floating-decoration dec-2">✨</view>
-      <view class="floating-decoration dec-3">🌙</view>
-      <view class="floating-decoration dec-4">💖</view>
-      <view class="floating-decoration dec-5">🐾</view>
     </view>
-    
-    <view class="tree-hole-description">
-      <text class="description-title">🌸 树洞时光 🌸</text>
-      <text class="description-text">
-        在繁忙的生活中，
-      </text>
-      <text class="description-text highlight">
-        有一个知心贴己的小 AI
-      </text>
-      <text class="description-text">
-        {{aiName}}会一直守在你身边，
-      </text>
-      <text class="description-text highlight">
-        倾听你的喜怒哀乐
-      </text>
-    </view>
-    
-    <!-- 互动按钮组 -->
+
     <view class="interaction-buttons">
       <view class="interaction-btn" bindtap="hugTreeHole">
         <text class="btn-icon">🤗</text>
@@ -89,168 +46,135 @@
         <text class="btn-text">心情</text>
       </view>
     </view>
-    
-    <!-- 底部提示 -->
-    <view class="interaction-hint-row">
-      <text class="interaction-hint">💭 轻触树洞或按钮，和瓜瓜互动吧~</text>
-    </view>
   </view>
 
-  <!-- 🌟 商业化功能（新增）- 放在女生宿舍前面 -->
-  <view class="commercial-section">
-    <view class="section-title-with-hint">
-      <text class="section-title">🎁 福利中心</text>
-      <text class="section-hint">做任务 · 攒积分 · 兑好礼</text>
+  <!-- 商业化功能 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title">🎁 福利中心</text>
+      <text class="hint">做任务 · 攒积分 · 兑好礼</text>
     </view>
-    
-    <view class="commercial-grid">
-      <!-- 积分商城 -->
-      <view class="commercial-card" bindtap="navigateTo" data-page="/pages/pointsShop/pointsShop">
-        <view class="commercial-icon">🌟</view>
-        <view class="commercial-info">
-          <text class="commercial-name">积分商城</text>
-          <text class="commercial-desc">兑水晶折扣券</text>
-        </view>
+
+    <view class="grid-menu">
+      <view class="grid-item" bindtap="goToPointsShop">
+        <text class="grid-icon">🌟</text>
+        <text class="grid-name">积分商城</text>
+        <text class="grid-desc">兑水晶折扣券</text>
       </view>
-      
-      <!-- 每日任务 -->
-      <view class="commercial-card" bindtap="navigateTo" data-page="/pages/tasks/tasks">
-        <view class="commercial-icon">📋</view>
-        <view class="commercial-info">
-          <text class="commercial-name">每日任务</text>
-          <text class="commercial-desc">完成任务赚星光</text>
-        </view>
+      <view class="grid-item" bindtap="goToTasks">
+        <text class="grid-icon">📋</text>
+        <text class="grid-name">每日任务</text>
+        <text class="grid-desc">完成任务赚星光</text>
       </view>
-      
-      <!-- 我的优惠券 -->
-      <view class="commercial-card" bindtap="navigateTo" data-page="/pages/myCoupons/myCoupons">
-        <view class="commercial-icon">🎫</view>
-        <view class="commercial-info">
-          <text class="commercial-name">我的优惠券</text>
-          <text class="commercial-desc">水晶折扣券</text>
-        </view>
+      <view class="grid-item" bindtap="goToCoupons">
+        <text class="grid-icon">🎫</text>
+        <text class="grid-name">优惠券</text>
+        <text class="grid-desc">水晶折扣券</text>
       </view>
-      
-      <!-- 我的积分 -->
-      <view class="commercial-card" bindtap="navigateTo" data-page="/pages/myPoints/myPoints">
-        <view class="commercial-icon">💎</view>
-        <view class="commercial-info">
-          <text class="commercial-name">我的积分</text>
-          <text class="commercial-desc">星光值晶钻</text>
-        </view>
+      <view class="grid-item" bindtap="goToMyPoints">
+        <text class="grid-icon">💎</text>
+        <text class="grid-name">我的积分</text>
+        <text class="grid-desc">星光值晶钻</text>
       </view>
     </view>
   </view>
 
-  <!-- 🏠 宿舍装修商城 -->
-  <view class="decoration-section">
-    <view class="section-title-with-hint">
-      <text class="section-title">🎨 宿舍装修</text>
-      <text class="section-hint">装扮你的温馨小窝</text>
+  <!-- 宿舍装修 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title">🎨 宿舍装修</text>
+      <text class="hint">装扮你的温馨小窝</text>
     </view>
-    
-    <view class="decoration-card" bindtap="navigateTo" data-page="/pages/decoration-shop/decoration-shop">
-      <view class="decoration-icon">🏡✨</view>
-      <view class="decoration-content">
-        <text class="decoration-name">装修商城</text>
-        <text class="decoration-desc">家具、壁纸、装饰品，打造专属宿舍</text>
+
+    <view class="card" bindtap="goToDecorationShop">
+      <text class="card-icon">🏡✨</text>
+      <view class="card-content">
+        <text class="card-name">装修商城</text>
+        <text class="card-desc">家具、壁纸、装饰品</text>
       </view>
-      <view class="decoration-arrow">→</view>
+      <text class="card-arrow">→</text>
     </view>
   </view>
 
-  <!-- 女生宿舍（P1 核心社交） -->
-  <view class="dormitory-section">
-    <view class="section-title-with-hint">
-      <text class="section-title">🏠 女生宿舍</text>
-      <text class="section-hint">和闺蜜的小天地</text>
+  <!-- 女生宿舍 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title">🏠 女生宿舍</text>
+      <text class="hint">{{hasDormitory ? '和闺蜜的小天地' : '创建你的宿舍'}}</text>
     </view>
-    
-    <view class="dormitory-card" bindtap="navigateTo" data-page="/pages/dormitory/index/index">
-      <view class="dormitory-icon">🏠💖</view>
-      <view class="dormitory-content">
-        <text class="dormitory-name">女生宿舍</text>
-        <text class="dormitory-desc">创建宿舍、邀请闺蜜、分享心情</text>
+
+    <view class="card" bindtap="goToDormitory">
+      <text class="card-icon">🏠💖</text>
+      <view class="card-content">
+        <text class="card-name">女生宿舍</text>
+        <text class="card-desc">{{hasDormitory ? '查看宿舍动态' : '创建专属宿舍'}}</text>
       </view>
-      <view class="dormitory-arrow">→</view>
+      <text class="card-arrow">→</text>
     </view>
   </view>
 
-  <!-- 常用功能（P2 高频） -->
-  <view class="quick-actions-section">
-    <view class="section-title-with-hint">
-      <text class="section-title">✨ 常用功能</text>
-      <text class="section-hint">记录心情、放松助眠</text>
+  <!-- 常用功能 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title">✨ 常用功能</text>
+      <text class="hint">记录心情、放松助眠</text>
     </view>
-    
-    <view class="quick-actions-grid">
-      <!-- 今天的小确幸 -->
-      <view class="quick-action-card" bindtap="navigateTo" data-page="/pages/summary/summary">
-        <view class="action-icon">📊</view>
-        <view class="action-info">
-          <text class="action-name">今天的小确幸</text>
-          <text class="action-desc">记录美好瞬间</text>
-        </view>
+
+    <view class="grid-menu">
+      <view class="grid-item" bindtap="goToSummary">
+        <text class="grid-icon">📊</text>
+        <text class="grid-name">小确幸</text>
+        <text class="grid-desc">记录美好</text>
       </view>
-      
-      <!-- 哄睡小故事 -->
-      <view class="quick-action-card" bindtap="navigateTo" data-page="/pages/stories/stories">
-        <view class="action-icon">🌙</view>
-        <view class="action-info">
-          <text class="action-name">哄睡小故事</text>
-          <text class="action-desc">伴你入眠</text>
-        </view>
+      <view class="grid-item" bindtap="goToMoodStats">
+        <text class="grid-icon">💗</text>
+        <text class="grid-name">心情日记</text>
+        <text class="grid-desc">情绪变化</text>
       </view>
-      
-      <!-- 深呼吸一下 -->
-      <view class="quick-action-card" bindtap="navigateTo" data-page="/pages/relax/relax">
-        <view class="action-icon">🧘</view>
-        <view class="action-info">
-          <text class="action-name">深呼吸一下</text>
-          <text class="action-desc">放松减压</text>
-        </view>
+      <view class="grid-item" bindtap="goToStories">
+        <text class="grid-icon">🌙</text>
+        <text class="grid-name">哄睡故事</text>
+        <text class="grid-desc">伴你入眠</text>
       </view>
-      
-      <!-- 读给你听 -->
-      <view class="quick-action-card" bindtap="navigateTo" data-page="/pages/custom-read/index">
-        <view class="action-icon">📖</view>
-        <view class="action-info">
-          <text class="action-name">读给你听</text>
-          <text class="action-desc">温暖陪伴</text>
-        </view>
+      <view class="grid-item" bindtap="goToRelax">
+        <text class="grid-icon">🧘</text>
+        <text class="grid-name">放松</text>
+        <text class="grid-desc">减压助眠</text>
       </view>
     </view>
   </view>
 
-  <!-- 主打功能（P0 核心功能） -->
-  <view class="featured-section">
-    <view class="section-title">💬 陪伴聊天</view>
-    <view class="featured-card" bindtap="navigateTo" data-page="/pages/chat/chat">
-      <view class="featured-icon">💕</view>
-      <view class="featured-content">
-        <text class="featured-name">说说心里话</text>
-        <text class="featured-desc">和{{aiName}}聊聊你的小秘密~</text>
+  <!-- 陪伴聊天 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title">💬 陪伴聊天</text>
+    </view>
+
+    <view class="card featured" bindtap="quickChat">
+      <text class="card-icon">💕</text>
+      <view class="card-content">
+        <text class="card-name">说说心里话</text>
+        <text class="card-desc">和{{aiName}}聊聊你的小秘密~</text>
       </view>
-      <view class="featured-arrow">→</view>
+      <text class="card-arrow">→</text>
     </view>
   </view>
 
-  <!-- 个人中心入口 -->
-  <view class="profile-section">
-    <view class="profile-card" bindtap="navigateTo" data-page="/pages/profile/profile">
-      <view class="profile-icon">👤</view>
-      <view class="profile-content">
-        <text class="profile-name">我的小天地</text>
-        <text class="profile-desc">个人设置、成就、使用统计</text>
+  <!-- 个人中心 -->
+  <view class="section">
+    <view class="card" bindtap="goToProfile">
+      <text class="card-icon">👤</text>
+      <view class="card-content">
+        <text class="card-name">我的小天地</text>
+        <text class="card-desc">个人设置、成就、统计</text>
       </view>
-      <view class="profile-arrow">→</view>
+      <text class="card-arrow">→</text>
     </view>
   </view>
 
   <!-- 底部鼓励语 -->
-  <view class="footer-message">
-    <view class="footer-icon">💕</view>
-    <text class="daily-quote">{{dailyQuote}}</text>
+  <view class="footer">
+    <text class="quote">{{dailyQuote}}</text>
   </view>
 
 </view>

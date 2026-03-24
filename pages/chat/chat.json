@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "说说心里话"
+  "navigationBarTitleText": "和瓜瓜聊天",
+  "navigationStyle": "custom"
 }

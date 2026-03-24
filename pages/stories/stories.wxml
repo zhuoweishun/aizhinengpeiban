@@ -1,110 +1,40 @@
 <!--
-  哄睡小故事页面（原睡前故事）
-  @description 故事列表和详情展示
-  @author 玄枢
-  @date 2026-03-15
-  @note 故事数据待千夜交付，目前使用 placeholder
-  @update 女性审美优化：睡前故事 → 哄睡小故事
+  哄睡故事页面
+  @description 温暖故事伴你入眠
 -->
 
 <view class="container">
-  <!-- 顶部标题 -->
+
+  <!-- 头部 -->
   <view class="header">
-    <!-- 【女性审美优化】睡前故事 → 哄睡小故事 -->
-    <text class="title">📖 {{aiName}}讲小故事</text>
+    <text class="title">🌙 哄睡故事</text>
     <text class="subtitle">让温暖的故事伴你入眠</text>
   </view>
 
-  <!-- 分类标签 -->
-  <view class="category-tabs">
-    <view 
-      class="tab-item {{currentCategory === 'all' ? 'active' : ''}}" 
-      bindtap="switchCategory" 
-      data-category="all"
-    >
-      全部
-    </view>
-    <view 
-      class="tab-item {{currentCategory === 'warm' ? 'active' : ''}}" 
-      bindtap="switchCategory" 
-      data-category="warm"
-    >
-      温暖治愈
-    </view>
-    <view 
-      class="tab-item {{currentCategory === 'adventure' ? 'active' : ''}}" 
-      bindtap="switchCategory" 
-      data-category="adventure"
-    >
-      奇幻冒险
-    </view>
-    <view 
-      class="tab-item {{currentCategory === 'bedtime' ? 'active' : ''}}" 
-      bindtap="switchCategory" 
-      data-category="bedtime"
-    >
-      助眠放松
-    </view>
-  </view>
-
   <!-- 故事列表 -->
-  <scroll-view class="story-scroll" scroll-y>
-    <view class="story-list">
-      <block wx:for="{{stories}}" wx:key="id">
-        <view class="story-card" bindtap="openStory" data-id="{{item.id}}">
-          <view class="story-cover">{{item.cover}}</view>
-          <view class="story-info">
-            <text class="story-title">{{item.title}}</text>
-            <text class="story-desc">{{item.description}}</text>
-            <view class="story-meta">
-              <text class="meta-item">⏱️ {{item.duration}}分钟</text>
-              <text class="meta-item">👁️ {{item.views}}次收听</text>
-            </view>
+  <view class="story-list">
+    <block wx:for="{{stories}}" wx:key="id">
+      <view class="story-item" bindtap="playStory" data-id="{{item.id}}">
+        <view class="story-icon">{{item.icon}}</view>
+        <view class="story-info">
+          <text class="story-title">{{item.title}}</text>
+          <text class="story-desc">{{item.description}}</text>
+          <view class="story-meta">
+            <text class="story-duration">⏱️ {{item.duration}}分钟</text>
+            <text class="story-playcount">👂 {{item.playCount}}次</text>
           </view>
         </view>
-      </block>
-
-      <!-- 空状态 -->
-      <view class="empty-state" wx:if="{{stories.length === 0}}">
-        <text class="empty-icon">📚</text>
-        <text class="empty-text">故事加载中...</text>
-        <text class="empty-hint">千夜正在准备温暖的故事~</text>
+        <view class="story-play">
+          <text class="play-icon">▶️</text>
+        </view>
       </view>
-    </view>
-  </scroll-view>
-
-  <!-- 播放控制栏（播放时显示） -->
-  <view class="player-bar safe-area-bottom" wx:if="{{isPlaying}}">
-    <view class="player-info">
-      <text class="playing-title">{{currentStory.title}}</text>
-      <text class="playing-status">{{isPaused ? '已暂停' : '正在播放...'}}</text>
-      <text class="playing-time" wx:if="{{playingDuration > 0}}">{{playingProgress}}s / {{playingDuration}}s</text>
-    </view>
-    <view class="player-controls">
-      <view class="control-btn" bindtap="togglePlay">
-        <text>{{isPaused ? '▶️' : '⏸️'}}</text>
-      </view>
-      <view class="control-btn" bindtap="stopPlay">
-        <text>⏹️</text>
-      </view>
-    </view>
+    </block>
   </view>
-</view>
 
-<!-- 故事详情自定义弹窗 -->
-<view class="custom-dialog-mask" wx:if="{{showDetail}}" catchtap="closeDetail">
-  <view class="custom-dialog" catchtap="e">
-    <view class="dialog-title">{{currentStory.title}}</view>
-    <view class="dialog-content">
-      <text class="detail-desc">{{currentStory.description}}</text>
-      <view class="detail-meta">
-        <text>时长：{{currentStory.duration}}分钟</text>
-        <text>分类：{{currentStory.category}}</text>
-      </view>
-    </view>
-    <view class="dialog-footer">
-      <view class="dialog-cancel" bindtap="closeDetail">下次再说</view>
-      <view class="dialog-confirm" bindtap="startPlay">开始收听</view>
-    </view>
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{stories.length === 0}}">
+    <text class="empty-icon">📖</text>
+    <text class="empty-text">暂无故事</text>
   </view>
+
 </view>
